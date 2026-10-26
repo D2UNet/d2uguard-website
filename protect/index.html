@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D2UGuard — Managed Cybersecurity | Fiji and the Pacific</title>
+<meta name="description" content="Fully managed cybersecurity for organisations in Fiji and the Pacific. We protect your people, email, devices, cloud and network — monitored around the clock, run by our team, reported every month.">
+<link rel="canonical" href="https://www.d2uguard.com/protect">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/appicon_navy_180.png">
+<meta property="og:title" content="D2UGuard — Managed Cybersecurity">
+<meta property="og:description" content="Fully managed cybersecurity for business in Fiji and the Pacific. Monitored around the clock, run by our team, reported every month.">
+<meta property="og:image" content="https://www.d2uguard.com/logo_on_navy_1200.png">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0C1F35; --ink-2:#16324F; --paper:#FBFAF7; --paper-2:#F2EFE8; --paper-3:#E8E3D9;
+  --line:#DAD4C8; --green:#18a41b; --green-d:#166B1A; --lime:#7DC242; --green-l:#E9F3E5;
+  --slate:#5C6B7C;
+  --display:"Newsreader",Georgia,serif;
+  --brand:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"Public Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",Consolas,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.62;
+  -webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{width:min(1160px,90vw);margin:0 auto}
+h1,h2{font-family:var(--display);font-weight:500;line-height:1.12;letter-spacing:-.015em}
+h1{font-size:clamp(2.4rem,5.4vw,4.2rem)}
+h2{font-size:clamp(1.85rem,3.5vw,2.8rem)}
+h3{font-family:var(--body);font-weight:700;font-size:1.02rem;line-height:1.35}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--green)}
+.eyebrow--l{color:#8FC98A}
+.lede{font-size:clamp(1.04rem,1.5vw,1.2rem);color:var(--slate);max-width:56ch}
+.lede--l{color:#A9BED4}
+.band{padding:clamp(2rem,3.6vw,3.2rem) 0}
+.band--dark{background:var(--ink);color:var(--paper)}
+.band--tint{background:var(--paper-2)}
+.head{max-width:62ch;margin-bottom:1.5rem}
+.head .eyebrow{display:block;margin-bottom:1rem}
+.head h2{margin-bottom:1rem}
+
+/* consolidation comparison */
+.vs{display:grid;grid-template-columns:1fr auto 1fr;gap:1.6rem;align-items:stretch;margin-top:1.4rem}
+.vs__col{border:1px solid var(--line);border-radius:6px;padding:1.7rem;background:#fff}
+.vs__col--bad{background:var(--paper-2);border-style:dashed}
+.vs__col--good{border-color:var(--green);box-shadow:0 0 0 2px rgba(30,144,35,.13)}
+.vs__k{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  margin-bottom:.9rem}
+.vs__col--bad .vs__k{color:var(--slate)}
+.vs__col--good .vs__k{color:var(--green)}
+.vs__h{font-family:var(--display);font-size:1.35rem;margin-bottom:1.1rem;line-height:1.2}
+.vs__list{list-style:none;display:grid;gap:.62rem}
+.vs__list li{font-size:.9rem;padding-left:1.5rem;position:relative;line-height:1.5}
+.vs__col--bad li{color:var(--slate)}
+.vs__col--bad li::before{content:"✕";position:absolute;left:0;top:-.05em;color:#B4413A;
+  font-size:1.05rem;font-weight:700}
+.vs__col--good li::before{content:"✔";position:absolute;left:0;top:.02em;color:var(--green);
+  font-size:.9rem;font-weight:700}
+.vs__mid{display:flex;align-items:center;justify-content:center}
+.vs__arrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;color:var(--slate);
+  writing-mode:vertical-rl;text-orientation:mixed;text-transform:uppercase}
+
+/* coverage panel (hero right) */
+.stack{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#fff;
+  box-shadow:0 1px 2px rgba(12,31,53,.05),0 18px 44px rgba(12,31,53,.08)}
+.stack__head{padding:1rem 1.3rem;border-bottom:1px solid var(--line);background:var(--paper-2);
+  display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.stack__title{font-family:var(--display);font-size:1.14rem}
+.stack__hint{font-family:var(--mono);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--slate)}
+.lay{border-bottom:1px solid var(--paper-3);width:100%;text-align:left;background:#fff;
+  cursor:pointer;font-family:var(--body);display:block;padding:0;border-left:none;border-right:none;border-top:none}
+.lay:last-child{border-bottom:none}
+.lay:hover{background:var(--paper)}
+.lay:focus-visible{outline:2px solid var(--green);outline-offset:-2px}
+.lay__top{display:flex;align-items:center;gap:.85rem;padding:.95rem 1.3rem}
+.lay__dot{width:.58rem;height:.58rem;border-radius:50%;background:var(--green);flex-shrink:0}
+.lay__n{font-family:var(--mono);font-size:.7rem;color:var(--slate)}
+.lay__name{font-weight:600;font-size:.96rem;flex:1;color:var(--ink)}
+.lay__mark{font-family:var(--mono);font-size:1.05rem;color:var(--green);line-height:1;
+  transition:transform .18s ease}
+.lay[aria-expanded="true"] .lay__mark{transform:rotate(45deg)}
+.lay__body{display:none;padding:0 1.3rem 1.2rem 3.2rem}
+.lay[aria-expanded="true"] .lay__body{display:block}
+.lay__body p{font-size:.87rem;color:var(--slate);margin-bottom:.75rem;max-width:50ch}
+
+/* top bar */
+.topbar{border-bottom:1px solid var(--line);background:var(--paper)}
+.topbar__in{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;
+  padding:1.5rem 0;flex-wrap:wrap}
+.brand svg{height:92px;width:auto;display:block}
+.topnav{display:flex;align-items:center;gap:1.6rem;flex-wrap:wrap}
+.topnav a:not(.btn){font-size:.9rem;font-weight:600;text-decoration:none;color:var(--slate)}
+.topnav a:not(.btn):hover{color:var(--ink)}
+.topnav .btn--primary{color:#fff;text-decoration:none}
+.topnav .tel{font-family:var(--mono);font-size:.88rem;color:var(--ink);font-weight:500}
+
+/* hero */
+.hero{padding:clamp(1.8rem,3vw,2.8rem) 0 clamp(2.2rem,3.6vw,3.4rem);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-14%;top:-26%;width:52vw;height:52vw;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,rgba(30,144,35,.09),transparent 62%);pointer-events:none}
+.hero__inner{position:relative;display:grid;grid-template-columns:1.05fr .95fr;
+  gap:clamp(2.4rem,5vw,4.6rem);align-items:center}
+.hero h1{margin-bottom:1.4rem}
+.hero h1 em{font-style:italic;color:var(--green)}
+.hero__lede{margin-bottom:2rem}
+.hero__meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:1.6rem;
+  padding-top:1.2rem;border-top:1px solid var(--line)}
+.hero__meta b{display:block;font-family:var(--display);font-size:1.45rem;font-weight:500;line-height:1.1;margin-bottom:.2rem}
+.hero__meta span{font-size:.8rem;color:var(--slate);line-height:1.45;display:block}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-weight:600;font-size:.95rem;
+  padding:.9rem 1.6rem;border-radius:3px;text-decoration:none;border:1.5px solid transparent;
+  cursor:pointer;font-family:var(--body);transition:background .15s ease,transform .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+.btn--primary{background:var(--green);color:#fff}
+.btn--primary:hover{background:var(--green-d)}
+.btn--line{border-color:var(--ink);color:var(--ink)}
+.btn--line:hover{background:var(--ink);color:var(--paper)}
+.btn--onDark{background:var(--paper);color:var(--ink)}
+.btn-row{display:flex;gap:.9rem;flex-wrap:wrap}
+
+/* protection stack */
+.stack{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#fff;
+  box-shadow:0 1px 2px rgba(12,31,53,.05),0 18px 44px rgba(12,31,53,.08)}
+.stack__head{padding:1.1rem 1.4rem;border-bottom:1px solid var(--line);background:var(--paper-2);
+  display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.stack__title{font-family:var(--display);font-size:1.15rem}
+.stack__hint{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--slate)}
+.layer{border-bottom:1px solid var(--paper-3);width:100%;text-align:left;background:#fff;
+  cursor:pointer;font-family:var(--body);display:block;padding:0;border-left:none;border-right:none;border-top:none}
+.layer:last-child{border-bottom:none}
+.layer:hover{background:var(--paper)}
+.layer:focus-visible{outline:2px solid var(--green);outline-offset:-2px}
+.layer__top{display:flex;align-items:center;gap:1rem;padding:1.02rem 1.4rem}
+.layer__dot{width:.6rem;height:.6rem;border-radius:50%;background:var(--green);flex-shrink:0}
+.layer__name{font-weight:600;font-size:.98rem;flex:1;color:var(--ink)}
+.layer__n{font-family:var(--mono);font-size:.72rem;color:var(--slate)}
+.layer__mark{font-family:var(--mono);font-size:1.1rem;color:var(--green);line-height:1;transition:transform .18s ease}
+.layer[aria-expanded="true"] .layer__mark{transform:rotate(45deg)}
+.layer__body{display:none;padding:0 1.4rem 1.3rem 3.4rem}
+.layer[aria-expanded="true"] .layer__body{display:block}
+.layer__body p{font-size:.88rem;color:var(--slate);margin-bottom:.8rem;max-width:52ch}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.chip{font-size:.76rem;background:var(--green-l);border:1px solid #C6E0C0;color:#1B5E1F;
+  border-radius:100px;padding:.24rem .68rem;font-weight:500}
+
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem}
+.card{border:1px solid var(--line);border-radius:5px;padding:1.6rem;background:#fff}
+.card--flat{background:transparent;border:none;padding:0;border-top:2px solid var(--ink);padding-top:1.1rem}
+.card h3{margin-bottom:.55rem}
+.card p{font-size:.9rem;color:var(--slate)}
+.card__k{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--green);margin-bottom:.6rem}
+
+.pk{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;align-items:stretch}
+.pk__item{border:1px solid var(--line);border-radius:5px;background:#fff;display:flex;flex-direction:column;overflow:hidden}
+.pk__body li b{font-weight:700}
+.pk__item--hero{border-color:var(--green);box-shadow:0 0 0 2px rgba(30,144,35,.14)}
+.pk__top{padding:1.2rem 1.15rem;border-bottom:1px solid var(--paper-3);background:var(--paper-2)}
+.pk__item--hero .pk__top{background:var(--green-l);border-bottom-color:#C6E0C0}
+.pk__nm{font-family:var(--display);font-size:1.28rem;margin-bottom:.2rem}
+.pk__for{font-size:.8rem;color:var(--slate)}
+.pk__body{padding:1.15rem;flex:1}
+.pk__body ul{list-style:none;display:grid;gap:.5rem}
+.pk__body li{font-size:.86rem;padding-left:1.3rem;position:relative;line-height:1.5}
+.pk__body li::before{content:"";position:absolute;left:0;top:.52em;width:.42rem;height:.42rem;border-radius:1px;background:var(--green)}
+.pk__body li.mut{color:var(--slate);font-style:italic}
+.pk__body li.mut::before{background:var(--line)}
+
+.tl{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:1.5rem}
+.tl__step{padding:1.2rem 1.4rem 0 0;border-top:2px solid rgba(255,255,255,.22)}
+.tl__step:first-child{border-top-color:var(--green)}
+.tl__t{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:#8FC98A;margin-bottom:.5rem}
+.tl__step h3{color:var(--paper);margin-bottom:.4rem}
+.tl__step p{font-size:.87rem;color:#A9BED4}
+
+.ev{border:1px solid var(--line);border-left:3px solid var(--green);border-radius:4px;background:#fff;padding:1.9rem}
+.ev h3{font-family:var(--display);font-weight:500;font-size:1.4rem;margin-bottom:.7rem}
+.ev p{font-size:.94rem;color:var(--slate);max-width:70ch;margin-bottom:1.2rem}
+
+.cta{background:var(--ink);color:var(--paper);border-radius:6px;padding:clamp(1.8rem,3vw,2.6rem);
+  display:grid;grid-template-columns:1.4fr 1fr;gap:2rem;align-items:center;margin-bottom:1.8rem}
+.cta h2{color:var(--paper);margin-bottom:.8rem}
+.cta p{color:#A9BED4;max-width:50ch;font-size:.98rem}
+.cta ul{list-style:none;display:grid;gap:.45rem;margin-top:1.2rem}
+.cta li{font-size:.88rem;color:#C3D4E4;padding-left:1.25rem;position:relative}
+.cta li::before{content:"";position:absolute;left:0;top:.55em;width:.38rem;height:.38rem;border-radius:50%;background:#8FC98A}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1.25fr 1fr;gap:2.6rem;align-items:start;
+  background:var(--paper-2);border:1px solid var(--line);border-radius:6px;padding:clamp(1.9rem,3.5vw,2.8rem)}
+.form{display:grid;gap:.9rem}
+.field{display:grid;gap:.35rem}
+.field label{font-size:.82rem;font-weight:600}
+.field input,.field select,.field textarea{font-family:var(--body);font-size:.95rem;padding:.72rem .85rem;
+  border:1px solid var(--line);border-radius:4px;background:#fff;color:var(--ink);width:100%}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--green);outline-offset:1px;border-color:var(--green)}
+.field textarea{min-height:88px;resize:vertical}
+.form__row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.form__note{font-size:.78rem;color:var(--slate);line-height:1.55}
+.reach{display:grid;gap:1.3rem;align-content:start}
+.reach__item{display:grid;gap:.2rem;padding-bottom:1.15rem;border-bottom:1px solid var(--line)}
+.reach__item:last-child{border-bottom:none;padding-bottom:0}
+.reach__k{font-family:var(--mono);font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;color:var(--green)}
+.reach__v{font-family:var(--display);font-size:1.2rem;line-height:1.3}
+.reach__v a{text-decoration:none}
+.reach__v a:hover{text-decoration:underline}
+.reach__m{font-size:.82rem;color:var(--slate);line-height:1.5;font-style:normal}
+.wa{display:inline-flex;align-items:center;gap:.4rem;margin-top:.45rem;font-size:.88rem;
+  font-weight:600;color:var(--green);text-decoration:none}
+.wa:hover{text-decoration:underline}
+
+/* footer */
+.foot{background:var(--ink);color:#A9BED4;padding:2.4rem 0 1.8rem}
+.foot svg{height:34px;width:auto;display:block;margin-bottom:1rem}
+.foot__grid{display:grid;grid-template-columns:1.25fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2.2rem}
+.foot h4{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  color:#8FC98A;margin-bottom:.8rem;font-weight:500}
+.foot p,.foot address{font-size:.86rem;line-height:1.7;font-style:normal}
+.foot a{color:#C3D4E4;text-decoration:none}
+.foot a:hover{text-decoration:underline}
+.foot__note{border-top:1px solid #1E3A5C;padding-top:1.6rem;font-size:.76rem;line-height:1.7;
+  color:#7E9AC0;max-width:100ch}
+
+/* large desktop */
+@media (min-width:1500px){ .wrap{width:min(1280px,88vw)} }
+/* 15.6-16 inch laptops */
+@media (max-width:1440px){ .wrap{width:min(1120px,92vw)} }
+/* 14 inch laptops and large tablets landscape */
+@media (max-width:1240px){
+  .wrap{width:94vw}
+  .grid3{grid-template-columns:repeat(2,1fr)}
+  .topnav{gap:1.1rem}
+  .topnav a:not(.btn){font-size:.86rem}
+  .brand svg{height:76px}
+}
+/* tablets landscape / small laptops */
+@media (max-width:1080px){
+  .hero__inner{grid-template-columns:1fr;gap:2rem}
+  .vs{grid-template-columns:1fr;gap:1.1rem}
+  .vs__mid{display:none}
+  .cta{grid-template-columns:1fr}
+  .contact{grid-template-columns:1fr}
+  .tl{grid-template-columns:1fr 1fr;gap:1.2rem 0}
+  .foot__grid{grid-template-columns:1fr 1fr}
+}
+/* tablets portrait */
+@media (max-width:860px){
+  .grid3{grid-template-columns:1fr 1fr}
+  .grid2{grid-template-columns:1fr}
+  .hero__meta{grid-template-columns:repeat(2,1fr)}
+  .topbar__in{gap:1rem}
+  .brand svg{height:64px}
+}
+/* phones */
+@media (max-width:640px){
+  .grid3,.grid2,.tl,.form__row,.foot__grid{grid-template-columns:1fr}
+  .hero__meta{grid-template-columns:1fr 1fr}
+  .lay__body{padding-left:1.3rem}
+  .brand svg{height:52px}
+  .topnav{width:100%;justify-content:space-between;gap:.7rem}
+  .topnav a:not(.btn){font-size:.82rem}
+  .btn{padding:.8rem 1.2rem;font-size:.9rem}
+  .tl__step{padding-right:0}
+}
+@media (max-width:520px){
+  .topnav{gap:.6rem 1rem}
+  .topnav a:not(.btn){font-size:.8rem}
+  .topnav .btn{width:100%;justify-content:center;margin-top:.2rem}
+}
+@media (max-width:340px){
+  .topnav a:not(.btn){display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+<style>
+.switch{background:var(--ink);color:#C3D4E4;font-size:.82rem}
+.switch__in{display:flex;align-items:center;justify-content:center;gap:.9rem;padding:.55rem 0;
+  flex-wrap:wrap;text-align:center}
+.switch a{color:var(--lime);font-weight:600;text-decoration:none;white-space:nowrap}
+.switch a:hover{text-decoration:underline}
+.switch__sep{opacity:.35}
+</style>
+<style>
+.tagline{display:block;text-transform:none;font-family:var(--display);font-weight:500;
+  font-size:clamp(1.25rem,2.2vw,1.65rem);letter-spacing:-.01em;line-height:1.2;color:var(--green)}
+.tagline__sub{display:block;text-transform:uppercase;font-family:var(--body);font-weight:700;font-size:.8rem;
+  letter-spacing:.12em;color:var(--slate);margin-top:.4rem}
+</style>
+<style>
+/* ---- full-measure text ---- */
+.lede{max-width:none}
+.head{max-width:none}
+.hero__lede{max-width:none}
+.head .lede{max-width:none}
+.pick__p{max-width:none}
+.foot__note{max-width:none}
+.card p, .tier p{max-width:none}
+.layer__body p{max-width:none}
+
+/* ---- tagline ---- */
+.tagline{font-size:clamp(1.7rem,3.1vw,2.5rem);line-height:1.15}
+.tagline__sub{font-size:.9rem;letter-spacing:.14em;margin-top:.55rem}
+
+/* ---- section headings: larger and bolder ---- */
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.15em}
+.head h2{font-size:clamp(2rem,3.9vw,3rem);font-weight:600}
+.card h3, .pk__item h3{font-size:1.14rem;font-weight:700}
+.card__k{font-size:.74rem;font-weight:700;letter-spacing:.13em}
+.ev h3{font-size:1.55rem;font-weight:600}
+.tl__step h3{font-size:1.14rem;font-weight:700}
+.pick__h{font-size:1.75rem}
+.stack__title{font-size:1.24rem}
+
+/* ---- hero headline on one line ---- */
+.hero h1{max-width:none}
+.hero h1 .l2{display:block}
+
+/* ---- footer ---- */
+.foot svg{height:58px}
+.foot__grid{grid-template-columns:1.6fr 1fr 1fr 1fr;gap:2.2rem}
+.foot__brand p{max-width:46ch}
+@media (max-width:1080px){ .foot__grid{grid-template-columns:1fr 1fr} }
+@media (max-width:640px){ .foot__grid{grid-template-columns:1fr} .foot svg{height:46px} }
+</style>
+<style>
+/* layer sub-headings and notes */
+.lay__sub{display:block;font-family:var(--mono);font-size:.66rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--green);margin:.9rem 0 .45rem}
+.lay__body p + .lay__sub{margin-top:.2rem}
+.lay__note{display:block;font-size:.8rem;color:var(--slate);font-style:italic;margin-top:.8rem;line-height:1.5}
+.lay__note--key{font-style:normal;font-weight:600;color:var(--ink)}
+.lay__body p{line-height:1.6}
+</style>
+</head>
+<body>
+<div class="switch"><div class="wrap switch__in"><span>Managed security for organisations in <b>Fiji and the Pacific</b>.</span><span class="switch__sep">·</span><a href="/partners">In Australia or New Zealand? See the partner programme</a></div></div>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <a class="brand" href="/" aria-label="D2UGuard home"><svg viewBox="0 0 360 100" role="img" aria-label="D2UGuard"><g transform="translate(0 0)"><circle cx="50" cy="50" r="38" fill="none" stroke="#0C1F35" stroke-width="10" stroke-linecap="round" stroke-dasharray="179.07 59.69" transform="rotate(-18 50 50)"/><circle cx="50" cy="50" r="21" fill="none" stroke="#18a41b" stroke-width="10" stroke-linecap="round" stroke-dasharray="98.96 32.99" transform="rotate(162 50 50)"/><circle cx="50" cy="50" r="7.5" fill="#18a41b"/></g><g transform="translate(113 66)"><path fill="#0C1F35" d="M3.404 0.0V-31.648H17.112Q22.54 -31.648 26.22 -29.945999999999998Q29.9 -28.244 31.808999999999997 -24.747999999999998Q33.717999999999996 -21.252 33.717999999999996 -15.824Q33.717999999999996 -10.442 31.808999999999997 -6.923Q29.9 -3.404 26.22 -1.702Q22.54 0.0 17.112 0.0ZM13.57 -7.59H16.928Q18.584 -7.59 19.802999999999997 -8.05Q21.022 -8.51 21.804 -9.384Q22.586 -10.258 22.954 -11.546Q23.322 -12.834 23.322 -14.443999999999999V-17.204Q23.322 -18.814 22.954 -20.102Q22.586 -21.39 21.804 -22.264Q21.022 -23.137999999999998 19.802999999999997 -23.598Q18.584 -24.058 16.928 -24.058H13.57Z M36.431999999999995 0.0V-2.208Q36.431999999999995 -4.14 37.25999999999999 -5.865Q38.087999999999994 -7.59 39.491 -9.131Q40.894 -10.672 42.596 -12.075Q44.297999999999995 -13.478 46.092 -14.812Q47.931999999999995 -16.192 49.542 -17.342Q51.152 -18.492 52.164 -19.688000000000002Q53.176 -20.884 53.176 -22.355999999999998Q53.176 -23.23 52.762 -23.989Q52.348 -24.748 51.497 -25.231Q50.646 -25.714 49.22 -25.714Q47.794 -25.714 46.80499999999999 -25.162Q45.815999999999995 -24.61 45.28699999999999 -23.621Q44.757999999999996 -22.631999999999998 44.757999999999996 -21.39V-20.47H36.57Q36.524 -20.746 36.524 -20.999Q36.524 -21.252 36.524 -21.482Q36.524 -24.748 38.019 -27.14Q39.513999999999996 -29.532 42.527 -30.866Q45.54 -32.2 50.093999999999994 -32.2Q52.9 -32.2 55.153999999999996 -31.533Q57.408 -30.866 58.995 -29.601Q60.581999999999994 -28.336 61.43299999999999 -26.588Q62.28399999999999 -24.84 62.28399999999999 -22.678Q62.28399999999999 -20.562 61.501999999999995 -18.86Q60.72 -17.158 59.294 -15.686Q57.867999999999995 -14.214 56.02799999999999 -12.834Q54.187999999999995 -11.454 52.025999999999996 -10.028Q50.922 -9.292 50.232 -8.809000000000001Q49.541999999999994 -8.326 49.22 -8.096Q48.897999999999996 -7.866 48.806 -7.774H62.652V0.0Z M82.432 0.552Q77.464 0.552 73.945 -0.9430000000000001Q70.426 -2.438 68.53999999999999 -5.405Q66.654 -8.372 66.654 -12.741999999999999V-31.648H76.82V-12.879999999999999Q76.82 -10.35 78.19999999999999 -8.693999999999999Q79.58 -7.038 82.386 -7.038Q85.19200000000001 -7.038 86.595 -8.693999999999999Q87.998 -10.35 87.998 -12.879999999999999V-31.648H98.164V-12.741999999999999Q98.164 -8.372 96.301 -5.405Q94.438 -2.438 90.91900000000001 -0.9430000000000001Q87.4 0.552 82.432 0.552Z"/><path fill="#18a41b" d="M117.806 0.552Q109.894 0.552 105.961 -3.588Q102.02799999999999 -7.728 102.02799999999999 -15.824Q102.02799999999999 -21.252 104.05199999999999 -24.886Q106.076 -28.52 109.94 -30.36Q113.804 -32.2 119.27799999999999 -32.2Q122.59 -32.2 125.511 -31.441000000000003Q128.432 -30.682 130.663 -29.186999999999998Q132.894 -27.692 134.136 -25.438000000000002Q135.378 -23.184 135.378 -20.194H125.672Q125.672 -21.206 125.189 -22.034Q124.706 -22.862 123.878 -23.436999999999998Q123.05 -24.012 121.969 -24.311Q120.888 -24.61 119.692 -24.61Q117.898 -24.61 116.518 -24.127Q115.138 -23.644 114.241 -22.677999999999997Q113.344 -21.712 112.88399999999999 -20.378Q112.42399999999999 -19.044 112.42399999999999 -17.296V-14.352Q112.42399999999999 -12.052 113.22899999999998 -10.419Q114.03399999999999 -8.786 115.667 -7.912Q117.3 -7.038 119.692 -7.038Q121.30199999999999 -7.038 122.65899999999999 -7.521Q124.01599999999999 -8.004 124.844 -8.924Q125.672 -9.844 125.672 -11.04V-11.224H118.496V-17.664H135.378V0.0H130.134L129.12199999999999 -3.128Q127.696 -1.932 125.994 -1.104Q124.292 -0.276 122.268 0.138Q120.244 0.552 117.806 0.552Z M147.798 0.552Q143.474 0.552 141.404 -1.84Q139.334 -4.232 139.334 -8.556V-24.288H148.488V-9.66Q148.488 -8.924 148.695 -8.28Q148.902 -7.636 149.26999999999998 -7.176Q149.638 -6.716 150.236 -6.463Q150.834 -6.21 151.57 -6.21Q152.72 -6.21 153.571 -6.739Q154.422 -7.268 154.905 -8.142Q155.388 -9.016 155.388 -10.028V-24.288H164.542V0.0H157.04399999999998L156.584 -3.6799999999999997H156.262Q155.388 -2.346 154.031 -1.3800000000000001Q152.674 -0.414 151.06400000000002 0.06900000000000003Q149.454 0.552 147.798 0.552Z M175.674 0.552Q173.788 0.552 172.224 0.20700000000000002Q170.66 -0.138 169.51 -0.9430000000000001Q168.36 -1.748 167.739 -3.059Q167.118 -4.37 167.118 -6.256Q167.118 -8.97 168.245 -10.672Q169.37199999999999 -12.374 171.534 -13.294Q173.696 -14.214 176.801 -14.559000000000001Q179.906 -14.904 183.908 -14.904V-16.1Q183.908 -17.112 183.425 -17.732999999999997Q182.942 -18.354 182.16 -18.676000000000002Q181.378 -18.998 180.36599999999999 -18.998Q179.584 -18.998 178.756 -18.814Q177.928 -18.63 177.399 -18.17Q176.87 -17.71 176.87 -16.882V-16.698H167.854Q167.808 -16.882 167.808 -17.020000000000003Q167.808 -17.158 167.808 -17.342Q167.808 -19.596 169.257 -21.275Q170.706 -22.954 173.535 -23.897Q176.364 -24.84 180.504 -24.84Q183.862 -24.84 186.714 -24.104Q189.566 -23.368 191.31400000000002 -21.643Q193.062 -19.918 193.062 -16.928V-7.452Q193.062 -6.716 193.43 -6.186999999999999Q193.798 -5.6579999999999995 194.534 -5.6579999999999995H196.19V-0.368Q195.638 -0.046 194.373 0.253Q193.108 0.552 191.406 0.552Q189.566 0.552 188.186 0.18400000000000002Q186.806 -0.184 185.95499999999998 -0.874Q185.10399999999998 -1.564 184.782 -2.484H184.46Q183.494 -1.6099999999999999 182.22899999999998 -0.9199999999999999Q180.964 -0.22999999999999998 179.35399999999998 0.16100000000000003Q177.744 0.552 175.674 0.552ZM179.4 -5.152Q180.274 -5.152 181.079 -5.404999999999999Q181.88400000000001 -5.6579999999999995 182.52800000000002 -6.095Q183.172 -6.532 183.54 -7.1530000000000005Q183.908 -7.774 183.908 -8.51V-10.58Q181.194 -10.58 179.515 -10.166Q177.836 -9.752 177.054 -9.062000000000001Q176.272 -8.372 176.272 -7.452Q176.272 -6.532 176.732 -6.026Q177.192 -5.52 177.905 -5.336Q178.618 -5.152 179.4 -5.152Z M197.57 0.0V-24.288H205.068L205.666 -20.608H205.988Q206.586 -21.988 207.529 -22.954Q208.472 -23.919999999999998 209.714 -24.403Q210.95600000000002 -24.886 212.336 -24.886Q213.256 -24.886 213.99200000000002 -24.701999999999998Q214.728 -24.518 215.05 -24.334V-16.652H212.106Q210.63400000000001 -16.652 209.599 -16.261Q208.564 -15.87 207.94299999999998 -15.111Q207.322 -14.352 207.023 -13.271Q206.724 -12.19 206.724 -10.81V0.0Z M225.53799999999998 0.552Q222.31799999999998 0.552 220.01799999999997 -0.851Q217.718 -2.254 216.499 -5.083Q215.28 -7.912 215.28 -12.19Q215.28 -16.422 216.499 -19.228Q217.718 -22.034 220.01799999999997 -23.436999999999998Q222.31799999999998 -24.84 225.53799999999998 -24.84Q226.826 -24.84 228.04500000000002 -24.541Q229.264 -24.242 230.299 -23.621000000000002Q231.334 -23.0 232.024 -22.034H232.346V-33.35H241.5V0.0H234.048L233.404 -3.4499999999999997H233.082Q231.79399999999998 -1.38 229.862 -0.4139999999999999Q227.93 0.552 225.53799999999998 0.552ZM228.39 -6.21Q229.816 -6.21 230.713 -6.9Q231.60999999999999 -7.59 232.024 -8.763Q232.438 -9.936 232.438 -11.362V-12.879999999999999Q232.438 -13.938 232.208 -14.881Q231.978 -15.824 231.495 -16.537Q231.012 -17.25 230.23000000000002 -17.664Q229.448 -18.078 228.39 -18.078Q226.964 -18.078 226.09 -17.48Q225.216 -16.882 224.825 -15.824000000000002Q224.434 -14.766 224.434 -13.34V-10.902Q224.434 -9.475999999999999 224.825 -8.418Q225.216 -7.359999999999999 226.09 -6.785Q226.964 -6.21 228.39 -6.21Z"/></g></svg></a>
+    <nav class="topnav">
+      <a href="#cover">What we cover</a>
+      <a href="#service">The service</a>
+      <a href="#addons">Add-ons</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn--primary" href="#health-check" style="padding:.62rem 1.1rem">Free health check</a>
+    </nav>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap hero__inner">
+    <div>
+      <span class="eyebrow" style="display:block"><span class="tagline">Unified Digital Defence</span><span class="tagline__sub">Managed Cybersecurity Services &middot; Fiji and the Pacific</span></span>
+      <h1 style="margin-top:1.1rem">Cyber threats don't keep business hours. <em>Neither do we.</em></h1>
+      <p class="lede hero__lede">
+        Your systems are monitored around the clock by security professionals who identify,
+        investigate and respond to threats — day, night, weekends and public holidays.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn--primary" href="#health-check">Book a free cyber health check</a>
+        <a class="btn btn--line" href="#cover">See what we cover</a>
+      </div>
+      <div class="hero__meta">
+        <div><b>24×7×365</b><span>Monitored every hour of every day</span></div>
+        <div><b>15 min</b><span>Critical alerts acknowledged</span></div>
+        <div><b>Local</b><span>Local support and security management</span></div>
+        <div><b>One</b><span>Managed security service and number to call</span></div>
+      </div>
+    </div>
+
+    <div class="stack" id="cover">
+      <div class="stack__head">
+        <div class="stack__title">What we cover</div>
+        <div class="stack__hint">Select a layer</div>
+      </div>
+      <button class="lay" type="button" aria-expanded="true">
+    <span class="lay__top"><span class="lay__dot"></span><span class="lay__n">01</span>
+      <span class="lay__name">Endpoints and servers</span><span class="lay__mark">+</span></span>
+    <span class="lay__body"><p>EDR and MDR across every device and server, watched around the clock. Detection alone is not protection — when a threat is confirmed, supported containment actions can be initiated and an analyst takes ownership.</p><span class="chips"><span class="chip">EDR</span><span class="chip">MDR</span><span class="chip">24×7 SOC</span><span class="chip">Behavioural analysis</span><span class="chip">Automatic containment</span><span class="chip">Rollback</span></span></span>
+  </button><button class="lay" type="button" aria-expanded="false">
+    <span class="lay__top"><span class="lay__dot"></span><span class="lay__n">02</span>
+      <span class="lay__name">Email and identity</span><span class="lay__mark">+</span></span>
+    <span class="lay__body"><p>Email and cloud identities are two of the most common ways attackers get into an organisation. D2UGuard continuously protects both — identifying malicious messages, compromised accounts and suspicious behaviour before they become larger incidents.</p><span class="lay__sub">Email threat protection</span><span class="chips"><span class="chip">Phishing and spear-phishing protection</span><span class="chip">Malware and ransomware protection</span><span class="chip">Business email compromise and impersonation defence</span><span class="chip">Payment fraud protection</span><span class="chip">Zero-day email threat protection</span><span class="chip">Malicious URL and click-time protection</span><span class="chip">Email threat investigation</span><span class="chip">Quarantine management</span><span class="chip">Post-delivery threat remediation</span></span><span class="lay__sub">Identity threat protection</span><span class="chips"><span class="chip">Identity Threat Detection &amp; Response</span><span class="chip">Compromised account detection</span><span class="chip">Suspicious login and identity activity monitoring</span><span class="chip">Identity risk detection</span><span class="chip">Incident investigation and correlation</span><span class="chip">Guided remediation</span><span class="chip">Account containment and response</span></span><span class="lay__note">D2UGuard Complete adds advanced outbound Data Loss Prevention and email encryption for organisations requiring greater control over sensitive information leaving the business.</span></span>
+  </button><button class="lay" type="button" aria-expanded="false">
+    <span class="lay__top"><span class="lay__dot"></span><span class="lay__n">03</span>
+      <span class="lay__name">Cloud and data</span><span class="lay__mark">+</span></span>
+    <span class="lay__body"><p>Sensitive business information increasingly lives outside the traditional network perimeter.</p><p>D2UGuard continuously monitors supported cloud environments for exposed data, risky sharing and security issues that could leave business information accessible to the wrong people.</p><span class="chips"><span class="chip">Cloud data exposure monitoring</span><span class="chip">Publicly exposed files and folders</span><span class="chip">External sharing risk detection</span><span class="chip">Cloud security posture monitoring</span><span class="chip">Microsoft 365 and Google Workspace visibility</span><span class="chip">Continuous cloud risk analysis</span><span class="chip">Prioritised security issues</span><span class="chip">Guided remediation</span></span><span class="lay__note lay__note--key">Know where your business data is exposed before someone else finds it.</span></span>
+  </button><button class="lay" type="button" aria-expanded="false">
+    <span class="lay__top"><span class="lay__dot"></span><span class="lay__n">04</span>
+      <span class="lay__name">External exposure and testing</span><span class="lay__mark">+</span></span>
+    <span class="lay__body"><p>We look at your organisation the way an attacker would — from the outside in — and watch for your credentials appearing where they should not.</p><span class="chips"><span class="chip">External attack surface monitoring</span><span class="chip">Internet-facing exposure detection</span><span class="chip">Dark web monitoring</span><span class="chip">Compromised credential detection</span><span class="chip">Domain security monitoring</span></span><span class="lay__note">Vulnerability and exposure management and penetration testing are available as separately scoped services.</span></span>
+  </button><button class="lay" type="button" aria-expanded="false">
+    <span class="lay__top"><span class="lay__dot"></span><span class="lay__n">05</span>
+      <span class="lay__name">Human risk protection</span><span class="lay__mark">+</span></span>
+    <span class="lay__body"><p>Technology can stop many attacks, but attackers still target people. D2UGuard combines ongoing security awareness with simulated phishing campaigns to help employees recognise threats before they become incidents.</p><span class="chips"><span class="chip">Phishing simulations</span><span class="chip">Security awareness training</span><span class="chip">Employee security risk monitoring</span><span class="chip">Ongoing security education</span></span></span>
+  </button><button class="lay" type="button" aria-expanded="false">
+    <span class="lay__top"><span class="lay__dot"></span><span class="lay__n">06</span>
+      <span class="lay__name">Continuous risk and remediation</span><span class="lay__mark">+</span></span>
+    <span class="lay__body"><p>D2UGuard doesn't only detect attacks. It continuously identifies security issues across your protected environment and helps prioritise what needs attention.</p><span class="chips"><span class="chip">Continuous risk analysis</span><span class="chip">Prioritised security issues</span><span class="chip">Guided remediation</span><span class="chip">Automated remediation where supported</span><span class="chip">Security posture monitoring</span></span><span class="lay__note lay__note--key">When something needs fixing, you don't just receive another alert. You receive clear guidance on what needs to happen next.</span></span>
+  </button><button class="lay" type="button" aria-expanded="false">
+    <span class="lay__top"><span class="lay__dot"></span><span class="lay__n">07</span>
+      <span class="lay__name">Governance and assurance</span><span class="lay__mark">+</span></span>
+    <span class="lay__body"><p>Security leadership and the evidence to prove it — for your board, your insurer, your auditor and the clients who now ask before they will deal with you.</p><span class="chips"><span class="chip">vCISO</span><span class="chip">GRC</span><span class="chip">Essential Eight</span><span class="chip">ISO 27001 readiness</span><span class="chip">Control mapping</span><span class="chip">Compliance reporting</span><span class="chip">Board reporting</span></span><span class="lay__note">Governance, compliance and advisory services are available as separately scoped capabilities alongside D2UGuard.</span></span>
+  </button>
+    </div>
+  </div>
+</header>
+
+<!-- CONSOLIDATION -->
+<section class="band band--tint" id="consolidate">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Consolidation</span>
+      <h2>One managed security service. Not five separate products.</h2>
+      <p class="lede">Most organisations assemble security from separate vendors — one for endpoint,
+        one for email, one for awareness training, one for monitoring, one for exposure. Each with its
+        own console, its own contract, its own renewal, and its own support queue. Nobody owns the
+        whole picture.</p>
+    </div>
+    <div class="vs">
+      <div class="vs__col vs__col--bad">
+        <div class="vs__k">The usual arrangement</div>
+        <div class="vs__h">Five vendors, five dashboards</div>
+        <ul class="vs__list">
+          <li>Five or more consoles, each needing someone who knows it</li>
+          <li>Five contracts on five renewal dates</li>
+          <li>Five support numbers, and an argument about whose problem it is</li>
+          <li>Alerts in five places, correlated by nobody</li>
+          <li>Five invoices, five price rises</li>
+          <li>No single view of your security position</li>
+          <li>Evidence gathered by hand when an insurer or auditor asks</li>
+        </ul>
+      </div>
+      <div class="vs__mid"><span class="vs__arrow">Consolidated into</span></div>
+      <div class="vs__col vs__col--good">
+        <div class="vs__k">With D2UGuard</div>
+        <div class="vs__h">One managed service, one provider</div>
+        <ul class="vs__list">
+          <li>One managed service covering endpoint, email, identity, cloud, external exposure and human risk</li>
+          <li>One contract, one renewal, one monthly subscription</li>
+          <li>One number to call, and one team accountable for the outcome</li>
+          <li>Security events monitored and investigated around the clock through the managed service</li>
+          <li>One invoice, priced per person per month</li>
+          <li>A single monthly report covering your whole security position</li>
+          <li>Security reporting and evidence maintained to support audits, insurance and customer assessments</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE SERVICE -->
+<section class="band" id="service">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Managed security service</span>
+      <h2>Two levels of protection. Both fully managed.</h2>
+      <p class="lede">Both plans include 24×7 Managed Detection &amp; Response, with security events
+        continuously monitored, triaged and investigated by a security operations capability operating
+        around the clock. Our local team provides additional escalation, security management, reporting
+        and customer support during local business hours. Priced per person, per month.</p>
+    </div>
+    <div class="grid2" style="gap:1.4rem">
+      <div class="pk__item">
+        <div class="pk__top"><div class="pk__nm">D2UGuard Core</div>
+          <div class="pk__for">Continuous managed protection for the whole organisation — from 5 to 500 seats.</div></div>
+        <div class="pk__body"><ul>
+          <li><b>24×7 Managed Detection &amp; Response</b> — continuous monitoring, triage, investigation, containment and response.</li>
+          <li><b>Managed Endpoint Protection &amp; EDR</b> — behavioural detection, ransomware protection, automatic containment and rollback.</li>
+          <li><b>Advanced Email Threat Protection</b> — phishing, malware, impersonation, payment fraud, zero-day and malicious-link protection.</li>
+          <li><b>Identity Threat Detection &amp; Response</b> — detect compromised accounts, suspicious identity activity and account takeover.</li>
+          <li><b>Dark Web Monitoring</b> — identify leaked business credentials and compromised accounts.</li>
+          <li><b>External Attack Surface Monitoring</b> — continuously identify internet-facing exposures before attackers exploit them.</li>
+          <li><b>Cloud &amp; Data Protection</b> — identify exposed cloud data, risky sharing and cloud-security issues.</li>
+          <li><b>Secure Browsing</b> — help protect users from malicious and high-risk web destinations.</li>
+          <li><b>Human Risk Protection</b> — phishing simulations and ongoing security awareness training.</li>
+          <li><b>Monthly Executive Reporting</b> — a plain-English view of threats, incidents, exposures, security posture and recommended actions.</li>
+        </ul></div>
+      </div>
+      <div class="pk__item pk__item--hero">
+        <div class="pk__top"><div class="pk__nm">D2UGuard Complete</div>
+          <div class="pk__for">For regulated sectors and organisations holding sensitive data</div></div>
+        <div class="pk__body"><ul>
+          <li class="mut">Everything in Core, plus:</li>
+          <li><b>Advanced endpoint protection</b> with deep telemetry and full attack visibility</li>
+          <li><b>Active threat hunting</b> — analysts looking for what automation misses</li>
+          <li><b>Advanced Email &amp; Data Protection</b> — enhanced email security with outbound Data Loss Prevention (DLP) and encryption to help prevent sensitive information leaving the organisation.</li>
+          <li>Forensic investigation when something serious happens</li>
+          <li>Priority incident response</li>
+          <li>Quarterly security review with your named security manager</li>
+        </ul></div>
+      </div>
+    </div>
+    <p style="margin-top:1.6rem;font-size:.9rem;color:var(--slate)">
+      Pricing depends on the size of your organisation, your sector and what you need alongside the
+      core service. <a href="#contact" style="color:var(--green);font-weight:600">Request a
+      quotation</a> — we scope against your actual environment, not a standard list.</p>
+  </div>
+</section>
+
+<!-- ADD-ONS -->
+<section class="band band--tint" id="addons">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Modular services</span>
+      <h2>Extended capabilities</h2>
+      <p class="lede">Nothing here is bundled into the price of something you did not ask for. Each is
+        scoped and quoted on its own, and each is operated by us in the same way as the core service.</p>
+    </div>
+    <div class="grid3">
+      <div class="card"><div class="card__k">Endpoint estate</div>
+        <h3>Asset and patch management</h3>
+        <p>We run patching across Windows, macOS and Linux, maintain a live inventory of every device
+          and application, and enforce configuration policy. Unpatched software remains the most
+          common route into an organisation.</p></div>
+      <div class="card"><div class="card__k">Infrastructure</div>
+        <h3>Network monitoring</h3>
+        <p>Continuous monitoring of the equipment that keeps you running — discovery, real-time
+          alerting, bottleneck detection, network mapping and configuration monitoring.</p></div>
+      <div class="card"><div class="card__k">Exposure</div>
+        <h3>Vulnerability and exposure management</h3>
+        <p>Continuous scanning of your environment, prioritised by what an attacker would realistically
+          exploit rather than by raw severity score. Suited to larger estates.</p></div>
+      <div class="card"><div class="card__k">Advisory</div>
+        <h3>Virtual CISO</h3>
+        <p>Security leadership without the headcount. Risk register, control mapping, policy, board
+          reporting, and support for tenders, insurance questionnaires and client security
+          assessments.</p></div>
+      <div class="card"><div class="card__k">Resilience</div>
+        <h3>Backup and business continuity</h3>
+        <p>Immutable backup designed to protect recovery data from ransomware and unauthorised
+          modification, tested restores to validate recovery, and business continuity options where
+          downtime is a material risk.</p></div>
+      <div class="card"><div class="card__k">Evidence</div>
+        <h3>Log retention and compliance</h3>
+        <p>Extended security log retention and search, with retention periods scoped to your
+          requirements, plus optional control mapping and compliance reporting for the frameworks
+          relevant to your organisation.</p></div>
+      <div class="card"><div class="card__k">Identity</div>
+        <h3>Microsoft security hardening</h3>
+        <p>Multi-factor authentication, conditional access, privileged access control and device
+          management configured and managed properly. We can also supply and upgrade your Microsoft
+          licensing.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFENSIVE SECURITY -->
+<section class="band">
+  <div class="wrap">
+    <div class="grid2" style="align-items:center;gap:2.6rem">
+      <div>
+        <span class="eyebrow" style="display:block;margin-bottom:1rem">Offensive security</span>
+        <h2 style="margin-bottom:1rem">Penetration testing</h2>
+        <p class="lede" style="font-size:1rem">Available to any organisation, whether or not you take a
+          D2UGuard plan. Internal and external network penetration testing that simulates a real
+          adversary rather than running a scan — with a report written for the people who have to act
+          on it, and for the tender or insurer who asked for it.</p>
+        <div class="btn-row" style="margin-top:1.6rem">
+          <a class="btn btn--line" href="#contact">Enquire about penetration testing</a>
+        </div>
+      </div>
+      <div class="ev">
+        <h3>What is delivered</h3>
+        <p>A point-in-time assessment of what an attacker could realistically achieve in your
+          environment, and a prioritised remediation plan.</p>
+        <div class="chips">
+          <span class="chip">Internal network testing</span><span class="chip">External network testing</span>
+          <span class="chip">Executive summary</span><span class="chip">Technical findings</span>
+          <span class="chip">Prioritised remediation plan</span><span class="chip">Retest after remediation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INCIDENT RESPONSE -->
+<section class="band band--dark">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow eyebrow--l">Incident response</span>
+      <h2 style="color:var(--paper)">From detection to resolution</h2>
+      <p class="lede lede--l">Not an alert into an empty inbox. A defined sequence, with a person at
+        the end of it.</p>
+    </div>
+    <div class="tl">
+      <div class="tl__step"><div class="tl__t">DETECT</div><h3>Detected</h3>
+        <p>Suspicious behaviour on a protected device, identity, email or cloud environment is
+          identified and assessed using the security controls operating across the service.</p></div>
+      <div class="tl__step"><div class="tl__t">CONTAIN</div><h3>Contained</h3>
+        <p>Where supported and appropriate, containment actions can be initiated to help prevent a
+          confirmed threat from spreading across the organisation.</p></div>
+      <div class="tl__step"><div class="tl__t">INVESTIGATE</div><h3>Investigated</h3>
+        <p>Security analysts investigate what happened, how the activity started, what was affected
+          and whether further action is required.</p></div>
+      <div class="tl__step"><div class="tl__t">REPORT</div><h3>Reported</h3>
+        <p>You receive a clear explanation of what happened, what was affected, what action was taken
+          and what requires a decision — in plain English.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ASSURANCE -->
+<section class="band band--tint">
+  <div class="wrap">
+    <div class="grid2" style="align-items:start;gap:2.4rem">
+      <div>
+        <span class="eyebrow" style="display:block;margin-bottom:1rem">Assurance and compliance</span>
+        <h2 style="margin-bottom:1rem">Security evidence you can use when it matters</h2>
+        <p class="lede" style="font-size:1rem">Cyber insurers, enterprise clients and government buyers
+          increasingly ask organisations to demonstrate the security controls they have in place.
+          D2UGuard provides regular security reporting that helps demonstrate the controls operating
+          across your environment. Additional compliance, control-mapping and governance services can
+          support cyber insurance, audits, tenders and customer security assessments.</p>
+      </div>
+      <div class="ev">
+        <h3>What you receive</h3>
+        <p>A monthly executive report in plain English: what we saw, what we stopped, what changed in
+          your environment and what requires a decision from you. Where additional governance or
+          compliance services are engaged, we can also help develop the supporting control
+          documentation required for audits, insurance, tenders and customer assessments.</p>
+        <div class="chips">
+          <span class="chip">Cyber insurance questionnaires</span><span class="chip">Client security assessments</span>
+          <span class="chip">Government tender responses</span><span class="chip">Privacy and breach obligations</span>
+          <span class="chip">Control framework mapping</span><span class="chip">Board and audit reporting</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPERATING MODEL -->
+<section class="band">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">Our operating model</span>
+      <h2>Security is what we do. All of it.</h2></div>
+    <div class="grid3">
+      <div class="card"><h3>We operate it, you do not</h3>
+        <p>There is no console for your team to check and no alerts for them to interpret. Monitoring,
+          tuning, investigation and reporting are ours. Your people continue working exactly as they
+          do now.</p></div>
+      <div class="card"><h3>We work alongside your IT function</h3>
+        <p>Whether that is an internal team or an external provider, keep them. We take security off
+          their plate and give them the same monthly reporting we give you. Very few IT teams run a
+          round-the-clock security capability.</p></div>
+      <div class="card"><h3>We stay close</h3>
+        <p>We cap how many organisations we look after directly, so your named security manager knows
+          your environment rather than reading it off a ticket. When it is serious we can be in the
+          room.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA + CONTACT -->
+<section class="band" id="health-check">
+  <div class="wrap">
+    <div class="cta">
+      <div>
+        <span class="eyebrow eyebrow--l" style="display:block;margin-bottom:1rem">No cost, no obligation</span>
+        <h2>Start with a free cyber health check</h2>
+        <p>We assess your organisation the way an attacker would, and report plainly on what we found.
+          Most organisations are surprised by at least one thing.</p>
+        <ul>
+          <li>External attack surface scan — what is exposed to the internet</li>
+          <li>Dark web exposure check — which of your credentials have already leaked</li>
+          <li>Email security assessment — whether your domain can be spoofed</li>
+          <li>Microsoft 365 configuration review</li>
+          <li>A plain-English summary you can take to your board</li>
+        </ul>
+      </div>
+      <div class="btn-row" style="justify-content:flex-end">
+        <a class="btn btn--onDark" href="#contact">Request your health check</a>
+      </div>
+    </div>
+
+    <div class="contact" id="contact">
+      <div>
+        <span class="eyebrow" style="display:block;margin-bottom:.9rem">Request your health check</span>
+        <h2 style="font-size:1.5rem;margin-bottom:1.2rem">Tell us about your organisation</h2>
+        <form class="form" name="health-check" method="POST" data-netlify="true"
+              netlify-honeypot="bot-field" action="/thanks/">
+          <input type="hidden" name="form-name" value="health-check">
+          <p hidden><label>Leave this empty: <input name="bot-field"></label></p>
+          <div class="form__row">
+            <div class="field"><label for="c-name">Your name</label>
+              <input id="c-name" name="name" type="text" autocomplete="name" required></div>
+            <div class="field"><label for="c-org">Organisation</label>
+              <input id="c-org" name="organisation" type="text" autocomplete="organization" required></div>
+          </div>
+          <div class="form__row">
+            <div class="field"><label for="c-email">Work email</label>
+              <input id="c-email" name="email" type="email" autocomplete="email" required></div>
+            <div class="field"><label for="c-phone">Phone</label>
+              <input id="c-phone" name="phone" type="tel" autocomplete="tel"></div>
+          </div>
+          <div class="field"><label for="c-domain">Your primary domain</label>
+            <input id="c-domain" name="domain" type="text" placeholder="the domain your email uses, for example yourorganisation.com.fj" required></div>
+          <div class="form__row">
+            <div class="field"><label for="c-mail">Email platform</label>
+              <select id="c-mail" name="platform">
+                <option value="">Select…</option><option>Microsoft 365</option>
+                <option>Google Workspace</option><option>On-premise mail server</option>
+                <option>Other or not sure</option></select></div>
+            <div class="field"><label for="c-size">Number of staff</label>
+              <select id="c-size" name="staff">
+                <option value="">Select…</option><option>Under 20</option><option>20 to 50</option>
+                <option>50 to 100</option><option>100 to 200</option><option>Over 200</option></select></div>
+          </div>
+          <div class="form__row">
+            <div class="field"><label for="c-it">Who looks after your IT</label>
+              <select id="c-it" name="it">
+                <option value="">Select…</option><option>An internal IT team</option>
+                <option>An external IT provider</option><option>Both</option>
+                <option>Nobody in particular</option></select></div>
+            <div class="field"><label for="c-sector">Sector</label>
+              <select id="c-sector" name="sector">
+                <option value="">Select…</option><option>Government or public sector</option>
+                <option>Financial services or insurance</option><option>Health</option>
+                <option>Professional services</option><option>Tourism and hospitality</option>
+                <option>Retail, wholesale or distribution</option><option>Other</option></select></div>
+          </div>
+          <div class="field"><label for="c-msg">Anything you would like us to look at first</label>
+            <textarea id="c-msg" name="message" placeholder="Optional"></textarea></div>
+          <button class="btn btn--primary" type="submit" style="justify-self:start;margin-top:.3rem">
+            Request the health check</button>
+          <p class="form__note">We respond within one business day. The external checks require only
+            your domain name and no access to your systems. Where a Microsoft 365 configuration review
+            is requested, we may ask you to provide additional information or authorised access. We do
+            not share your details, and we will not add you to a mailing list without asking.</p>
+        </form>
+      </div>
+
+      <div class="reach">
+        <div class="reach__item">
+          <span class="reach__k">Fiji</span>
+          <span class="reach__v"><a href="tel:+6799121500">+679 912 1500</a></span>
+          <span class="reach__v"><a href="tel:+6797333288">+679 733 3288</a></span>
+          <address class="reach__m">Suite 22, Level 2, Presidents Plaza<br>
+            164 Ratu Mara Road, Samabula<br>Suva, Fiji</address>
+        </div>
+        <div class="reach__item">
+          <span class="reach__k">Email</span>
+          <span class="reach__v"><a href="mailto:secure@d2uguard.com">secure@d2uguard.com</a></span>
+          <span class="reach__m">Monday to Friday, 8am to 5pm.<br>
+            Leave a message outside those hours and we will return your call within two business
+            hours.</span>
+        </div>
+        <div class="reach__item">
+          <span class="reach__k">Existing clients</span>
+          <span class="reach__m">If an incident is in progress, use the incident number in your
+            service agreement rather than this page.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot"><div class="wrap">
+  <div class="foot__grid">
+    <div class="foot__brand"><svg viewBox="0 0 360 100" role="img" aria-label="D2UGuard"><g transform="translate(0 0)"><circle cx="50" cy="50" r="38" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" stroke-dasharray="179.07 59.69" transform="rotate(-18 50 50)"/><circle cx="50" cy="50" r="21" fill="none" stroke="#7DC242" stroke-width="10" stroke-linecap="round" stroke-dasharray="98.96 32.99" transform="rotate(162 50 50)"/><circle cx="50" cy="50" r="7.5" fill="#7DC242"/></g><g transform="translate(113 66)"><path fill="#FFFFFF" d="M3.404 0.0V-31.648H17.112Q22.54 -31.648 26.22 -29.945999999999998Q29.9 -28.244 31.808999999999997 -24.747999999999998Q33.717999999999996 -21.252 33.717999999999996 -15.824Q33.717999999999996 -10.442 31.808999999999997 -6.923Q29.9 -3.404 26.22 -1.702Q22.54 0.0 17.112 0.0ZM13.57 -7.59H16.928Q18.584 -7.59 19.802999999999997 -8.05Q21.022 -8.51 21.804 -9.384Q22.586 -10.258 22.954 -11.546Q23.322 -12.834 23.322 -14.443999999999999V-17.204Q23.322 -18.814 22.954 -20.102Q22.586 -21.39 21.804 -22.264Q21.022 -23.137999999999998 19.802999999999997 -23.598Q18.584 -24.058 16.928 -24.058H13.57Z M36.431999999999995 0.0V-2.208Q36.431999999999995 -4.14 37.25999999999999 -5.865Q38.087999999999994 -7.59 39.491 -9.131Q40.894 -10.672 42.596 -12.075Q44.297999999999995 -13.478 46.092 -14.812Q47.931999999999995 -16.192 49.542 -17.342Q51.152 -18.492 52.164 -19.688000000000002Q53.176 -20.884 53.176 -22.355999999999998Q53.176 -23.23 52.762 -23.989Q52.348 -24.748 51.497 -25.231Q50.646 -25.714 49.22 -25.714Q47.794 -25.714 46.80499999999999 -25.162Q45.815999999999995 -24.61 45.28699999999999 -23.621Q44.757999999999996 -22.631999999999998 44.757999999999996 -21.39V-20.47H36.57Q36.524 -20.746 36.524 -20.999Q36.524 -21.252 36.524 -21.482Q36.524 -24.748 38.019 -27.14Q39.513999999999996 -29.532 42.527 -30.866Q45.54 -32.2 50.093999999999994 -32.2Q52.9 -32.2 55.153999999999996 -31.533Q57.408 -30.866 58.995 -29.601Q60.581999999999994 -28.336 61.43299999999999 -26.588Q62.28399999999999 -24.84 62.28399999999999 -22.678Q62.28399999999999 -20.562 61.501999999999995 -18.86Q60.72 -17.158 59.294 -15.686Q57.867999999999995 -14.214 56.02799999999999 -12.834Q54.187999999999995 -11.454 52.025999999999996 -10.028Q50.922 -9.292 50.232 -8.809000000000001Q49.541999999999994 -8.326 49.22 -8.096Q48.897999999999996 -7.866 48.806 -7.774H62.652V0.0Z M82.432 0.552Q77.464 0.552 73.945 -0.9430000000000001Q70.426 -2.438 68.53999999999999 -5.405Q66.654 -8.372 66.654 -12.741999999999999V-31.648H76.82V-12.879999999999999Q76.82 -10.35 78.19999999999999 -8.693999999999999Q79.58 -7.038 82.386 -7.038Q85.19200000000001 -7.038 86.595 -8.693999999999999Q87.998 -10.35 87.998 -12.879999999999999V-31.648H98.164V-12.741999999999999Q98.164 -8.372 96.301 -5.405Q94.438 -2.438 90.91900000000001 -0.9430000000000001Q87.4 0.552 82.432 0.552Z"/><path fill="#7DC242" d="M117.806 0.552Q109.894 0.552 105.961 -3.588Q102.02799999999999 -7.728 102.02799999999999 -15.824Q102.02799999999999 -21.252 104.05199999999999 -24.886Q106.076 -28.52 109.94 -30.36Q113.804 -32.2 119.27799999999999 -32.2Q122.59 -32.2 125.511 -31.441000000000003Q128.432 -30.682 130.663 -29.186999999999998Q132.894 -27.692 134.136 -25.438000000000002Q135.378 -23.184 135.378 -20.194H125.672Q125.672 -21.206 125.189 -22.034Q124.706 -22.862 123.878 -23.436999999999998Q123.05 -24.012 121.969 -24.311Q120.888 -24.61 119.692 -24.61Q117.898 -24.61 116.518 -24.127Q115.138 -23.644 114.241 -22.677999999999997Q113.344 -21.712 112.88399999999999 -20.378Q112.42399999999999 -19.044 112.42399999999999 -17.296V-14.352Q112.42399999999999 -12.052 113.22899999999998 -10.419Q114.03399999999999 -8.786 115.667 -7.912Q117.3 -7.038 119.692 -7.038Q121.30199999999999 -7.038 122.65899999999999 -7.521Q124.01599999999999 -8.004 124.844 -8.924Q125.672 -9.844 125.672 -11.04V-11.224H118.496V-17.664H135.378V0.0H130.134L129.12199999999999 -3.128Q127.696 -1.932 125.994 -1.104Q124.292 -0.276 122.268 0.138Q120.244 0.552 117.806 0.552Z M147.798 0.552Q143.474 0.552 141.404 -1.84Q139.334 -4.232 139.334 -8.556V-24.288H148.488V-9.66Q148.488 -8.924 148.695 -8.28Q148.902 -7.636 149.26999999999998 -7.176Q149.638 -6.716 150.236 -6.463Q150.834 -6.21 151.57 -6.21Q152.72 -6.21 153.571 -6.739Q154.422 -7.268 154.905 -8.142Q155.388 -9.016 155.388 -10.028V-24.288H164.542V0.0H157.04399999999998L156.584 -3.6799999999999997H156.262Q155.388 -2.346 154.031 -1.3800000000000001Q152.674 -0.414 151.06400000000002 0.06900000000000003Q149.454 0.552 147.798 0.552Z M175.674 0.552Q173.788 0.552 172.224 0.20700000000000002Q170.66 -0.138 169.51 -0.9430000000000001Q168.36 -1.748 167.739 -3.059Q167.118 -4.37 167.118 -6.256Q167.118 -8.97 168.245 -10.672Q169.37199999999999 -12.374 171.534 -13.294Q173.696 -14.214 176.801 -14.559000000000001Q179.906 -14.904 183.908 -14.904V-16.1Q183.908 -17.112 183.425 -17.732999999999997Q182.942 -18.354 182.16 -18.676000000000002Q181.378 -18.998 180.36599999999999 -18.998Q179.584 -18.998 178.756 -18.814Q177.928 -18.63 177.399 -18.17Q176.87 -17.71 176.87 -16.882V-16.698H167.854Q167.808 -16.882 167.808 -17.020000000000003Q167.808 -17.158 167.808 -17.342Q167.808 -19.596 169.257 -21.275Q170.706 -22.954 173.535 -23.897Q176.364 -24.84 180.504 -24.84Q183.862 -24.84 186.714 -24.104Q189.566 -23.368 191.31400000000002 -21.643Q193.062 -19.918 193.062 -16.928V-7.452Q193.062 -6.716 193.43 -6.186999999999999Q193.798 -5.6579999999999995 194.534 -5.6579999999999995H196.19V-0.368Q195.638 -0.046 194.373 0.253Q193.108 0.552 191.406 0.552Q189.566 0.552 188.186 0.18400000000000002Q186.806 -0.184 185.95499999999998 -0.874Q185.10399999999998 -1.564 184.782 -2.484H184.46Q183.494 -1.6099999999999999 182.22899999999998 -0.9199999999999999Q180.964 -0.22999999999999998 179.35399999999998 0.16100000000000003Q177.744 0.552 175.674 0.552ZM179.4 -5.152Q180.274 -5.152 181.079 -5.404999999999999Q181.88400000000001 -5.6579999999999995 182.52800000000002 -6.095Q183.172 -6.532 183.54 -7.1530000000000005Q183.908 -7.774 183.908 -8.51V-10.58Q181.194 -10.58 179.515 -10.166Q177.836 -9.752 177.054 -9.062000000000001Q176.272 -8.372 176.272 -7.452Q176.272 -6.532 176.732 -6.026Q177.192 -5.52 177.905 -5.336Q178.618 -5.152 179.4 -5.152Z M197.57 0.0V-24.288H205.068L205.666 -20.608H205.988Q206.586 -21.988 207.529 -22.954Q208.472 -23.919999999999998 209.714 -24.403Q210.95600000000002 -24.886 212.336 -24.886Q213.256 -24.886 213.99200000000002 -24.701999999999998Q214.728 -24.518 215.05 -24.334V-16.652H212.106Q210.63400000000001 -16.652 209.599 -16.261Q208.564 -15.87 207.94299999999998 -15.111Q207.322 -14.352 207.023 -13.271Q206.724 -12.19 206.724 -10.81V0.0Z M225.53799999999998 0.552Q222.31799999999998 0.552 220.01799999999997 -0.851Q217.718 -2.254 216.499 -5.083Q215.28 -7.912 215.28 -12.19Q215.28 -16.422 216.499 -19.228Q217.718 -22.034 220.01799999999997 -23.436999999999998Q222.31799999999998 -24.84 225.53799999999998 -24.84Q226.826 -24.84 228.04500000000002 -24.541Q229.264 -24.242 230.299 -23.621000000000002Q231.334 -23.0 232.024 -22.034H232.346V-33.35H241.5V0.0H234.048L233.404 -3.4499999999999997H233.082Q231.79399999999998 -1.38 229.862 -0.4139999999999999Q227.93 0.552 225.53799999999998 0.552ZM228.39 -6.21Q229.816 -6.21 230.713 -6.9Q231.60999999999999 -7.59 232.024 -8.763Q232.438 -9.936 232.438 -11.362V-12.879999999999999Q232.438 -13.938 232.208 -14.881Q231.978 -15.824 231.495 -16.537Q231.012 -17.25 230.23000000000002 -17.664Q229.448 -18.078 228.39 -18.078Q226.964 -18.078 226.09 -17.48Q225.216 -16.882 224.825 -15.824000000000002Q224.434 -14.766 224.434 -13.34V-10.902Q224.434 -9.475999999999999 224.825 -8.418Q225.216 -7.359999999999999 226.09 -6.785Q226.964 -6.21 228.39 -6.21Z"/></g></svg>
+      <p>Unified digital defence across Australia, New Zealand, Fiji and the Pacific &mdash; delivered direct in Fiji and the Pacific, and exclusively through accredited partners in Australia and New Zealand.<br>A D2UNet solution.</p>
+      <p style="margin-top:.7rem"><a href="mailto:secure@d2uguard.com">secure@d2uguard.com</a></p></div>
+    <div><h4>Australia</h4><address>D2UNet Pty Ltd<br>Suite 2.03, Building T2A<br>Warawara Circuit, Nirimba Fields<br>NSW 2763, Australia</address></div>
+    <div><h4>New Zealand</h4><address>41 Kittiwake Drive<br>Schnapper Rock<br>Auckland 0632<br><a href="tel:+642041376904">+64 20 4137 6904</a></address></div>
+    <div><h4>Fiji</h4><address>Suite 22, Level 2, Presidents Plaza<br>164 Ratu Mara Road, Samabula<br>Suva, Fiji<br><a href="tel:+6799121500">+679 912 1500</a><br><a href="tel:+6797333288">+679 733 3288</a></address></div>
+  </div>
+  <p class="foot__note">D2UGuard is a managed cybersecurity service from D2UNet Pty Ltd (ABN 48 641 637 890), registered in Fiji as a foreign company (No. 2025RF000002) and in New Zealand (NZBN 9429052088636). In Fiji and the Pacific Islands, D2UGuard is delivered direct to organisations by D2UNet. In Australia and New Zealand, D2UGuard is supplied exclusively through accredited partners, who contract with and support their own clients. Managed Detection &amp; Response is provided 24&times;7 and backed by a global security operations centre. D2UNet provides local escalation, account management, reporting and additional security support during local business hours. Service inclusions and response capabilities vary by plan. Nothing on this page is an offer capable of acceptance; services are provided under a written agreement. &copy; 2026 D2UNet Pty Ltd.</p>
+</div></footer>
+<script>
+/* "What we cover" layers: open one at a time */
+(function(){
+  var layers = Array.prototype.slice.call(document.querySelectorAll('.lay'));
+  layers.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      layers.forEach(function(o){ o.setAttribute('aria-expanded','false'); });
+      btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+    });
+  });
+})();
+</script>
+</body></html>

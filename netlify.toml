@@ -1,0 +1,73 @@
+# D2UGuard — Netlify configuration
+
+[build]
+  publish = "."
+
+# ---------------------------------------------------------------------------
+# GEO ROUTING
+# Soft (302) redirects from the root only. Never 301 — a cached geo redirect
+# would follow a traveller around permanently. Direct URLs to /partners and
+# /protect are always honoured, and every page carries a visible switcher.
+# ---------------------------------------------------------------------------
+
+# Australia and New Zealand -> channel partner programme
+[[redirects]]
+  from = "/"
+  to = "/partners"
+  status = 302
+  force = false
+  conditions = {Country = ["AU", "NZ"]}
+
+# Fiji and the Pacific -> direct managed security
+[[redirects]]
+  from = "/"
+  to = "/protect"
+  status = 302
+  force = false
+  conditions = {Country = ["FJ", "PG", "SB", "VU", "WS", "AS", "TO", "CK", "NU", "KI", "TV", "NR", "MH", "FM", "PW", "NC", "PF", "WF", "TL"]}
+
+# Everyone else, including search engine crawlers, gets the neutral homepage.
+
+# ---------------------------------------------------------------------------
+# DOMAIN REDIRECT — d2uguard.com.au always means the channel
+# ---------------------------------------------------------------------------
+[[redirects]]
+  from = "https://d2uguard.com.au/*"
+  to = "https://www.d2uguard.com/partners"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.d2uguard.com.au/*"
+  to = "https://www.d2uguard.com/partners"
+  status = 301
+  force = true
+
+# ---------------------------------------------------------------------------
+# HEADERS
+# ---------------------------------------------------------------------------
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    Content-Security-Policy = "default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; script-src 'self' 'unsafe-inline'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# The root must never be cached, or the geo decision sticks.
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
