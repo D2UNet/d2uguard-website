@@ -451,6 +451,18 @@ h3{font-family:var(--body);font-weight:700;font-size:1.02rem;line-height:1.35}
   .sell__body{padding:0 1.1rem 1.2rem 1.1rem}
 }
 </style>
+<style>
+/* partner services */
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem}
+.svc{display:flex;flex-direction:column}
+.svc p{flex:1;margin-bottom:1.1rem}
+.card__k--add{color:var(--slate)}
+.svc__go{font-weight:700;font-size:.9rem;color:var(--green);text-decoration:none}
+.svc__go:hover{color:var(--green-d);text-decoration:underline}
+.svc__go:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+@media (max-width:1080px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.svc-grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 
@@ -571,10 +583,10 @@ h3{font-family:var(--body);font-weight:700;font-size:1.02rem;line-height:1.35}
 </section>
 
 <!-- WHAT YOU CAN SELL -->
-<section class="band band--rule" id="what-you-can-sell">
+<section class="band band--rule" id="seven-layers">
   <div class="wrap">
     <div class="head">
-      <span class="eyebrow">What You Can Sell</span>
+      <span class="eyebrow">Threat Protection</span>
       <h2>One Managed Security Service. Multiple Layers of Protection.</h2>
       <p class="lede">D2UGuard gives your MSP a comprehensive managed cybersecurity service you can
         package, price and deliver under your own brand.</p>
@@ -712,6 +724,52 @@ h3{font-family:var(--body);font-weight:700;font-size:1.02rem;line-height:1.35}
           under your own brand.</p>
         <p style="margin-top:.6rem">This gives your account managers a structured reason to talk about
           security throughout the year, rather than only when something goes wrong.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNER SERVICES -->
+<section class="band band--tint" id="what-you-can-sell">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">What you can sell</span>
+      <h2>Eight services, sold under your brand</h2>
+      <p class="lede">Control Hub &amp; ACE and Threat Protection are included with every seat. Add the
+        others client by client.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="card svc"><div class="card__k">Included with every seat</div>
+        <h3>Control Hub &amp; ACE</h3>
+        <p>Stop chasing alerts. Start closing risk.</p>
+        <a class="svc__go" href="/partners/control-hub-ace">See details &rarr;</a></div>
+      <div class="card svc"><div class="card__k">Included with every seat</div>
+        <h3>Threat Protection</h3>
+        <p>Seven layers of protection. Managed around the clock.</p>
+        <a class="svc__go" href="/partners/threat-protection">See details &rarr;</a></div>
+      <div class="card svc"><div class="card__k">Free discovery scan</div>
+        <h3>Shadow AI Exposure Scan</h3>
+        <p>Start with evidence. Then grow the service.</p>
+        <a class="svc__go" href="/partners/shadow-ai-scan">See details &rarr;</a></div>
+      <div class="card svc"><div class="card__k card__k--add">Partner add-on</div>
+        <h3>Vulnerability Management</h3>
+        <p>Find the weak spots first. Before attackers do.</p>
+        <a class="svc__go" href="/partners/vulnerability-management">See details &rarr;</a></div>
+      <div class="card svc"><div class="card__k card__k--add">Partner add-on</div>
+        <h3>Cloud Security</h3>
+        <p>One view of every cloud. Risks fixed, not just found.</p>
+        <a class="svc__go" href="/partners/cloud-security">See details &rarr;</a></div>
+      <div class="card svc"><div class="card__k card__k--add">Partner add-on</div>
+        <h3>Asset Management</h3>
+        <p>Every device, known. Every patch, applied.</p>
+        <a class="svc__go" href="/partners/asset-management">See details &rarr;</a></div>
+      <div class="card svc"><div class="card__k card__k--add">Partner add-on</div>
+        <h3>Identity Exposure</h3>
+        <p>Close the attack paths inside Active Directory.</p>
+        <a class="svc__go" href="/partners/identity-exposure">See details &rarr;</a></div>
+      <div class="card svc"><div class="card__k card__k--add">Partner add-on</div>
+        <h3>Network Monitoring</h3>
+        <p>Find network problems before users do.</p>
+        <a class="svc__go" href="/partners/network-monitoring">See details &rarr;</a></div>
     </div>
   </div>
 </section>
