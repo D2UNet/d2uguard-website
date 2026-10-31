@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /thanks/
+Disallow: /partners/thanks/
 
 Sitemap: https://www.d2uguard.com/sitemap.xml
