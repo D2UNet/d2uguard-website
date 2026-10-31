@@ -283,12 +283,6 @@ h3{font-family:var(--body);font-weight:700;font-size:1.02rem;line-height:1.35}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 /* hero spotlight: ACE and AI Governance & Security */
-.hl-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
-.hl-pill{display:inline-flex;align-items:center;gap:.45rem;font-size:.82rem;font-weight:600;text-decoration:none;color:var(--ink);
-  background:#fff;border:1px solid var(--line);border-radius:100px;padding:.35rem .8rem .35rem .4rem;transition:border-color .2s}
-.hl-pill:hover{border-color:var(--green)}
-.hl-pill:focus-visible{outline:2px solid var(--green);outline-offset:2px}
-.hl-pill b{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--green);border-radius:100px;padding:.18rem .5rem}
 .spot{background:var(--ink);color:var(--paper);padding:clamp(1.6rem,3vw,2.4rem) 0}
 .spot__grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
 .spot__c{display:grid;gap:.55rem;align-content:start;border:1px solid #2A4562;border-radius:12px;padding:clamp(1.2rem,2.2vw,1.7rem);
@@ -302,6 +296,22 @@ h3{font-family:var(--body);font-weight:700;font-size:1.02rem;line-height:1.35}
 .spot__alt{display:inline-flex;align-items:center;font-weight:600;font-size:.92rem;color:#fff;text-decoration:none;padding:.6rem .9rem;border:1px solid #3B5B7C;border-radius:8px}
 .spot__alt:hover{border-color:var(--lime);color:var(--lime)}
 .spot__alt:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
+
+/* hero feature buttons: ACE leads, AI Governance & Security second */
+.hl-feats{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.6rem}
+.feat{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--body);font-weight:700;font-size:1rem;
+  padding:.85rem 1.4rem .85rem .85rem;border-radius:3px;text-decoration:none;border:1.5px solid transparent;
+  transition:transform .15s ease,box-shadow .15s ease;box-shadow:0 6px 18px rgba(12,31,53,.14)}
+.feat:hover{transform:translateY(-1px);box-shadow:0 10px 26px rgba(12,31,53,.2)}
+.feat:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+.feat b{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;border-radius:100px;padding:.28rem .6rem}
+.feat--ace{background:var(--ink);color:#fff}
+.feat--ace b{background:var(--lime);color:var(--ink)}
+.feat--ai{background:var(--green);color:#fff}
+.feat--ai b{background:#fff;color:var(--green-d)}
+.btn-row--sm{margin-top:.9rem}
+.btn-row--sm .btn{padding:.6rem 1.1rem;font-size:.86rem}
+@media (max-width:520px){.feat{width:100%}}
 </style>
 
 <style>
@@ -469,7 +479,7 @@ h3{font-family:var(--body);font-weight:700;font-size:1.02rem;line-height:1.35}
       account management and reporting.
     </p>
     <p class="hero__promise">One service. One provider. One point of contact.</p>
-    <div class="hl-pills"><a class="hl-pill" href="#add-ons"><b>New</b>AI Governance &amp; Security &rarr;</a><a class="hl-pill" href="#add-ons"><b>ACE</b>One score, one action list &rarr;</a></div>
+    <div class="hl-feats"><a class="feat feat--ace" href="#add-ons"><b>ACE</b>One score, one action list &rarr;</a><a class="feat feat--ai" href="#add-ons"><b>New</b>AI Governance &amp; Security &rarr;</a></div>
 
     <div id="choose">
       <span class="eyebrow" style="display:block;margin-top:1rem">Two ways to work with us</span>

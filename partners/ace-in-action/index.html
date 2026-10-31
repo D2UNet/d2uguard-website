@@ -284,12 +284,6 @@ h3{font-family:var(--body);font-weight:700;font-size:1.02rem;line-height:1.35}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 
 /* hero spotlight: ACE and AI Governance & Security */
-.hl-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
-.hl-pill{display:inline-flex;align-items:center;gap:.45rem;font-size:.82rem;font-weight:600;text-decoration:none;color:var(--ink);
-  background:#fff;border:1px solid var(--line);border-radius:100px;padding:.35rem .8rem .35rem .4rem;transition:border-color .2s}
-.hl-pill:hover{border-color:var(--green)}
-.hl-pill:focus-visible{outline:2px solid var(--green);outline-offset:2px}
-.hl-pill b{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--green);border-radius:100px;padding:.18rem .5rem}
 .spot{background:var(--ink);color:var(--paper);padding:clamp(1.6rem,3vw,2.4rem) 0}
 .spot__grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
 .spot__c{display:grid;gap:.55rem;align-content:start;border:1px solid #2A4562;border-radius:12px;padding:clamp(1.2rem,2.2vw,1.7rem);
@@ -304,6 +298,23 @@ h3{font-family:var(--body);font-weight:700;font-size:1.02rem;line-height:1.35}
 .spot__alt:hover{border-color:var(--lime);color:var(--lime)}
 .spot__alt:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
 @media (max-width:860px){.spot__grid{grid-template-columns:1fr}}
+
+/* hero feature buttons: ACE leads, AI Governance & Security second */
+.hl-feats{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.6rem}
+.feat{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--body);font-weight:700;font-size:1rem;
+  padding:.85rem 1.4rem .85rem .85rem;border-radius:3px;text-decoration:none;border:1.5px solid transparent;
+  transition:transform .15s ease,box-shadow .15s ease;box-shadow:0 6px 18px rgba(12,31,53,.14)}
+.feat:hover{transform:translateY(-1px);box-shadow:0 10px 26px rgba(12,31,53,.2)}
+.feat:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+.feat b{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;border-radius:100px;padding:.28rem .6rem}
+.feat--ace{background:var(--ink);color:#fff}
+.feat--ace b{background:var(--lime);color:var(--ink)}
+.feat--ai{background:var(--green);color:#fff}
+.feat--ai b{background:#fff;color:var(--green-d)}
+.btn-row--sm{margin-top:.9rem}
+.btn-row--sm .btn{padding:.6rem 1.1rem;font-size:.86rem}
+.hero__inner .hl-feats{display:inline-grid;grid-template-columns:1fr}
+@media (max-width:520px){.feat{width:100%}.hero__inner .hl-feats{display:grid}}
 </style>
 
 <style>
