@@ -282,6 +282,28 @@ h3{font-family:var(--body);font-weight:700;font-size:1.02rem;line-height:1.35}
   .topnav a:not(.btn){display:none}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+/* hero spotlight: ACE and AI Governance & Security */
+.hl-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+.hl-pill{display:inline-flex;align-items:center;gap:.45rem;font-size:.82rem;font-weight:600;text-decoration:none;color:var(--ink);
+  background:#fff;border:1px solid var(--line);border-radius:100px;padding:.35rem .8rem .35rem .4rem;transition:border-color .2s}
+.hl-pill:hover{border-color:var(--green)}
+.hl-pill:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.hl-pill b{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--green);border-radius:100px;padding:.18rem .5rem}
+.spot{background:var(--ink);color:var(--paper);padding:clamp(1.6rem,3vw,2.4rem) 0}
+.spot__grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.spot__c{display:grid;gap:.55rem;align-content:start;border:1px solid #2A4562;border-radius:12px;padding:clamp(1.2rem,2.2vw,1.7rem);
+  background:linear-gradient(160deg,#13304F 0%,#0C1F35 70%)}
+.spot__k{font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8FC98A}
+.spot__h{font-family:var(--display);font-weight:500;font-size:clamp(1.35rem,2.2vw,1.8rem);line-height:1.18}
+.spot__h em{color:var(--lime);font-style:italic}
+.spot__p{color:#A9BED4;font-size:.95rem;line-height:1.55}
+.spot__b{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.5rem}
+.spot__b .btn--primary{background:var(--green);color:#fff}
+.spot__alt{display:inline-flex;align-items:center;font-weight:600;font-size:.92rem;color:#fff;text-decoration:none;padding:.6rem .9rem;border:1px solid #3B5B7C;border-radius:8px}
+.spot__alt:hover{border-color:var(--lime);color:var(--lime)}
+.spot__alt:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
+@media (max-width:860px){.spot__grid{grid-template-columns:1fr}}
 </style>
 
 <style>
