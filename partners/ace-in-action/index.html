@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ACE in action — D2UGuard Partner Programme</title>
+<meta name="description" content="See how ACE, the Adaptive Correlation Engine in D2UGuard, links weak signals into one action list and escalates as evidence builds.">
+
+<link rel="canonical" href="https://www.d2uguard.com/partners/ace-in-action">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/appicon_navy_180.png">
+<meta property="og:title" content="ACE in action — D2UGuard Partner Programme">
+<meta property="og:description" content="See how ACE, the Adaptive Correlation Engine in D2UGuard, links weak signals into one action list and escalates as evidence builds.">
+<meta property="og:image" content="https://www.d2uguard.com/logo_on_navy_1200.png">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0C1F35; --ink-2:#16324F; --paper:#FBFAF7; --paper-2:#F2EFE8; --paper-3:#E8E3D9;
+  --line:#DAD4C8; --green:#18a41b; --green-d:#166B1A; --lime:#7DC242; --green-l:#E9F3E5;
+  --slate:#5C6B7C;
+  --display:"Newsreader",Georgia,serif;
+  --brand:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"Public Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",Consolas,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.62;
+  -webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{width:min(1160px,90vw);margin:0 auto}
+h1,h2{font-family:var(--display);font-weight:500;line-height:1.12;letter-spacing:-.015em}
+h1{font-size:clamp(2.4rem,5.4vw,4.2rem)}
+h2{font-size:clamp(1.85rem,3.5vw,2.8rem)}
+h3{font-family:var(--body);font-weight:700;font-size:1.02rem;line-height:1.35}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--green)}
+.eyebrow--l{color:#8FC98A}
+.lede{font-size:clamp(1.04rem,1.5vw,1.2rem);color:var(--slate);max-width:56ch}
+.lede--l{color:#A9BED4}
+.band{padding:clamp(2rem,3.6vw,3.2rem) 0}
+.band--dark{background:var(--ink);color:var(--paper)}
+.band--tint{background:var(--paper-2)}
+.head{max-width:62ch;margin-bottom:1.5rem}
+.head .eyebrow{display:block;margin-bottom:1rem}
+.head h2{margin-bottom:1rem}
+
+/* consolidation comparison */
+.vs{display:grid;grid-template-columns:1fr auto 1fr;gap:1.6rem;align-items:stretch;margin-top:1.4rem}
+.vs__col{border:1px solid var(--line);border-radius:6px;padding:1.7rem;background:#fff}
+.vs__col--bad{background:var(--paper-2);border-style:dashed}
+.vs__col--good{border-color:var(--green);box-shadow:0 0 0 2px rgba(30,144,35,.13)}
+.vs__k{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  margin-bottom:.9rem}
+.vs__col--bad .vs__k{color:var(--slate)}
+.vs__col--good .vs__k{color:var(--green)}
+.vs__h{font-family:var(--display);font-size:1.35rem;margin-bottom:1.1rem;line-height:1.2}
+.vs__list{list-style:none;display:grid;gap:.62rem}
+.vs__list li{font-size:.9rem;padding-left:1.5rem;position:relative;line-height:1.5}
+.vs__col--bad li{color:var(--slate)}
+.vs__col--bad li::before{content:"✕";position:absolute;left:0;top:-.05em;color:#B4413A;
+  font-size:1.05rem;font-weight:700}
+.vs__col--good li::before{content:"✔";position:absolute;left:0;top:.02em;color:var(--green);
+  font-size:.9rem;font-weight:700}
+.vs__mid{display:flex;align-items:center;justify-content:center}
+.vs__arrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;color:var(--slate);
+  writing-mode:vertical-rl;text-orientation:mixed;text-transform:uppercase}
+
+/* coverage panel (hero right) */
+.stack{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#fff;
+  box-shadow:0 1px 2px rgba(12,31,53,.05),0 18px 44px rgba(12,31,53,.08)}
+.stack__head{padding:1rem 1.3rem;border-bottom:1px solid var(--line);background:var(--paper-2);
+  display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.stack__title{font-family:var(--display);font-size:1.14rem}
+.stack__hint{font-family:var(--mono);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--slate)}
+.lay{border-bottom:1px solid var(--paper-3);width:100%;text-align:left;background:#fff;
+  cursor:pointer;font-family:var(--body);display:block;padding:0;border-left:none;border-right:none;border-top:none}
+.lay:last-child{border-bottom:none}
+.lay:hover{background:var(--paper)}
+.lay:focus-visible{outline:2px solid var(--green);outline-offset:-2px}
+.lay__top{display:flex;align-items:center;gap:.85rem;padding:.95rem 1.3rem}
+.lay__dot{width:.58rem;height:.58rem;border-radius:50%;background:var(--green);flex-shrink:0}
+.lay__n{font-family:var(--mono);font-size:.7rem;color:var(--slate)}
+.lay__name{font-weight:600;font-size:.96rem;flex:1;color:var(--ink)}
+.lay__mark{font-family:var(--mono);font-size:1.05rem;color:var(--green);line-height:1;
+  transition:transform .18s ease}
+.lay[aria-expanded="true"] .lay__mark{transform:rotate(45deg)}
+.lay__body{display:none;padding:0 1.3rem 1.2rem 3.2rem}
+.lay[aria-expanded="true"] .lay__body{display:block}
+.lay__body p{font-size:.87rem;color:var(--slate);margin-bottom:.75rem;max-width:50ch}
+
+/* top bar */
+.topbar{border-bottom:1px solid var(--line);background:var(--paper)}
+.topbar__in{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;
+  padding:1.5rem 0;flex-wrap:wrap}
+.brand svg{height:92px;width:auto;display:block}
+.topnav{display:flex;align-items:center;gap:1.6rem;flex-wrap:wrap}
+.topnav a:not(.btn){font-size:.9rem;font-weight:600;text-decoration:none;color:var(--slate)}
+.topnav a:not(.btn):hover{color:var(--ink)}
+.topnav .btn--primary{color:#fff;text-decoration:none}
+.topnav .tel{font-family:var(--mono);font-size:.88rem;color:var(--ink);font-weight:500}
+
+/* hero */
+.hero{padding:clamp(1.8rem,3vw,2.8rem) 0 clamp(2.2rem,3.6vw,3.4rem);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-14%;top:-26%;width:52vw;height:52vw;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,rgba(30,144,35,.09),transparent 62%);pointer-events:none}
+.hero__inner{position:relative;display:grid;grid-template-columns:1.05fr .95fr;
+  gap:clamp(2.4rem,5vw,4.6rem);align-items:center}
+.hero h1{margin-bottom:1.4rem}
+.hero h1 em{font-style:italic;color:var(--green)}
+.hero__lede{margin-bottom:2rem}
+.hero__meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:1.6rem;
+  padding-top:1.2rem;border-top:1px solid var(--line)}
+.hero__meta b{display:block;font-family:var(--display);font-size:1.45rem;font-weight:500;line-height:1.1;margin-bottom:.2rem}
+.hero__meta span{font-size:.8rem;color:var(--slate);line-height:1.45;display:block}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-weight:600;font-size:.95rem;
+  padding:.9rem 1.6rem;border-radius:3px;text-decoration:none;border:1.5px solid transparent;
+  cursor:pointer;font-family:var(--body);transition:background .15s ease,transform .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+.btn--primary{background:var(--green);color:#fff}
+.btn--primary:hover{background:var(--green-d)}
+.btn--line{border-color:var(--ink);color:var(--ink)}
+.btn--line:hover{background:var(--ink);color:var(--paper)}
+.btn--onDark{background:var(--paper);color:var(--ink)}
+.btn-row{display:flex;gap:.9rem;flex-wrap:wrap}
+
+/* protection stack */
+.stack{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#fff;
+  box-shadow:0 1px 2px rgba(12,31,53,.05),0 18px 44px rgba(12,31,53,.08)}
+.stack__head{padding:1.1rem 1.4rem;border-bottom:1px solid var(--line);background:var(--paper-2);
+  display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.stack__title{font-family:var(--display);font-size:1.15rem}
+.stack__hint{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--slate)}
+.layer{border-bottom:1px solid var(--paper-3);width:100%;text-align:left;background:#fff;
+  cursor:pointer;font-family:var(--body);display:block;padding:0;border-left:none;border-right:none;border-top:none}
+.layer:last-child{border-bottom:none}
+.layer:hover{background:var(--paper)}
+.layer:focus-visible{outline:2px solid var(--green);outline-offset:-2px}
+.layer__top{display:flex;align-items:center;gap:1rem;padding:1.02rem 1.4rem}
+.layer__dot{width:.6rem;height:.6rem;border-radius:50%;background:var(--green);flex-shrink:0}
+.layer__name{font-weight:600;font-size:.98rem;flex:1;color:var(--ink)}
+.layer__n{font-family:var(--mono);font-size:.72rem;color:var(--slate)}
+.layer__mark{font-family:var(--mono);font-size:1.1rem;color:var(--green);line-height:1;transition:transform .18s ease}
+.layer[aria-expanded="true"] .layer__mark{transform:rotate(45deg)}
+.layer__body{display:none;padding:0 1.4rem 1.3rem 3.4rem}
+.layer[aria-expanded="true"] .layer__body{display:block}
+.layer__body p{font-size:.88rem;color:var(--slate);margin-bottom:.8rem;max-width:52ch}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.chip{font-size:.76rem;background:var(--green-l);border:1px solid #C6E0C0;color:#1B5E1F;
+  border-radius:100px;padding:.24rem .68rem;font-weight:500}
+
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem}
+.card{border:1px solid var(--line);border-radius:5px;padding:1.6rem;background:#fff}
+.card--flat{background:transparent;border:none;padding:0;border-top:2px solid var(--ink);padding-top:1.1rem}
+.card h3{margin-bottom:.55rem}
+.card p{font-size:.9rem;color:var(--slate)}
+.card__k{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--green);margin-bottom:.6rem}
+
+.pk{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;align-items:stretch}
+.pk__item{border:1px solid var(--line);border-radius:5px;background:#fff;display:flex;flex-direction:column;overflow:hidden}
+.pk__body li b{font-weight:700}
+.pk__item--hero{border-color:var(--green);box-shadow:0 0 0 2px rgba(30,144,35,.14)}
+.pk__top{padding:1.2rem 1.15rem;border-bottom:1px solid var(--paper-3);background:var(--paper-2)}
+.pk__item--hero .pk__top{background:var(--green-l);border-bottom-color:#C6E0C0}
+.pk__nm{font-family:var(--display);font-size:1.28rem;margin-bottom:.2rem}
+.pk__for{font-size:.8rem;color:var(--slate)}
+.pk__body{padding:1.15rem;flex:1}
+.pk__body ul{list-style:none;display:grid;gap:.5rem}
+.pk__body li{font-size:.86rem;padding-left:1.3rem;position:relative;line-height:1.5}
+.pk__body li::before{content:"";position:absolute;left:0;top:.52em;width:.42rem;height:.42rem;border-radius:1px;background:var(--green)}
+.pk__body li.mut{color:var(--slate);font-style:italic}
+.pk__body li.mut::before{background:var(--line)}
+
+.tl{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:1.5rem}
+.tl__step{padding:1.2rem 1.4rem 0 0;border-top:2px solid rgba(255,255,255,.22)}
+.tl__step:first-child{border-top-color:var(--green)}
+.tl__t{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:#8FC98A;margin-bottom:.5rem}
+.tl__step h3{color:var(--paper);margin-bottom:.4rem}
+.tl__step p{font-size:.87rem;color:#A9BED4}
+
+.ev{border:1px solid var(--line);border-left:3px solid var(--green);border-radius:4px;background:#fff;padding:1.9rem}
+.ev h3{font-family:var(--display);font-weight:500;font-size:1.4rem;margin-bottom:.7rem}
+.ev p{font-size:.94rem;color:var(--slate);max-width:70ch;margin-bottom:1.2rem}
+
+.cta{background:var(--ink);color:var(--paper);border-radius:6px;padding:clamp(1.8rem,3vw,2.6rem);
+  display:grid;grid-template-columns:1.4fr 1fr;gap:2rem;align-items:center;margin-bottom:1.8rem}
+.cta h2{color:var(--paper);margin-bottom:.8rem}
+.cta p{color:#A9BED4;max-width:50ch;font-size:.98rem}
+.cta ul{list-style:none;display:grid;gap:.45rem;margin-top:1.2rem}
+.cta li{font-size:.88rem;color:#C3D4E4;padding-left:1.25rem;position:relative}
+.cta li::before{content:"";position:absolute;left:0;top:.55em;width:.38rem;height:.38rem;border-radius:50%;background:#8FC98A}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1.25fr 1fr;gap:2.6rem;align-items:start;
+  background:var(--paper-2);border:1px solid var(--line);border-radius:6px;padding:clamp(1.9rem,3.5vw,2.8rem)}
+.form{display:grid;gap:.9rem}
+.field{display:grid;gap:.35rem}
+.field label{font-size:.82rem;font-weight:600}
+.field input,.field select,.field textarea{font-family:var(--body);font-size:.95rem;padding:.72rem .85rem;
+  border:1px solid var(--line);border-radius:4px;background:#fff;color:var(--ink);width:100%}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--green);outline-offset:1px;border-color:var(--green)}
+.field textarea{min-height:88px;resize:vertical}
+.form__row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.form__note{font-size:.78rem;color:var(--slate);line-height:1.55}
+.reach{display:grid;gap:1.3rem;align-content:start}
+.reach__item{display:grid;gap:.2rem;padding-bottom:1.15rem;border-bottom:1px solid var(--line)}
+.reach__item:last-child{border-bottom:none;padding-bottom:0}
+.reach__k{font-family:var(--mono);font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;color:var(--green)}
+.reach__v{font-family:var(--display);font-size:1.2rem;line-height:1.3}
+.reach__v a{text-decoration:none}
+.reach__v a:hover{text-decoration:underline}
+.reach__m{font-size:.82rem;color:var(--slate);line-height:1.5;font-style:normal}
+.wa{display:inline-flex;align-items:center;gap:.4rem;margin-top:.45rem;font-size:.88rem;
+  font-weight:600;color:var(--green);text-decoration:none}
+.wa:hover{text-decoration:underline}
+
+/* footer */
+.foot{background:var(--ink);color:#A9BED4;padding:2.4rem 0 1.8rem}
+.foot svg{height:34px;width:auto;display:block;margin-bottom:1rem}
+.foot__grid{display:grid;grid-template-columns:1.25fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2.2rem}
+.foot h4{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  color:#8FC98A;margin-bottom:.8rem;font-weight:500}
+.foot p,.foot address{font-size:.86rem;line-height:1.7;font-style:normal}
+.foot a{color:#C3D4E4;text-decoration:none}
+.foot a:hover{text-decoration:underline}
+.foot__note{border-top:1px solid #1E3A5C;padding-top:1.6rem;font-size:.76rem;line-height:1.7;
+  color:#7E9AC0;max-width:100ch}
+
+/* large desktop */
+@media (min-width:1500px){ .wrap{width:min(1280px,88vw)} }
+/* 15.6-16 inch laptops */
+@media (max-width:1440px){ .wrap{width:min(1120px,92vw)} }
+/* 14 inch laptops and large tablets landscape */
+@media (max-width:1240px){
+  .wrap{width:94vw}
+  .grid3{grid-template-columns:repeat(2,1fr)}
+  .topnav{gap:1.1rem}
+  .topnav a:not(.btn){font-size:.86rem}
+  .brand svg{height:76px}
+}
+/* tablets landscape / small laptops */
+@media (max-width:1080px){
+  .hero__inner{grid-template-columns:1fr;gap:2rem}
+  .vs{grid-template-columns:1fr;gap:1.1rem}
+  .vs__mid{display:none}
+  .cta{grid-template-columns:1fr}
+  .contact{grid-template-columns:1fr}
+  .tl{grid-template-columns:1fr 1fr;gap:1.2rem 0}
+  .foot__grid{grid-template-columns:1fr 1fr}
+}
+/* tablets portrait */
+@media (max-width:860px){
+  .grid3{grid-template-columns:1fr 1fr}
+  .grid2{grid-template-columns:1fr}
+  .hero__meta{grid-template-columns:repeat(2,1fr)}
+  .topbar__in{gap:1rem}
+  .brand svg{height:64px}
+}
+/* phones */
+@media (max-width:640px){
+  .grid3,.grid2,.tl,.form__row,.foot__grid{grid-template-columns:1fr}
+  .hero__meta{grid-template-columns:1fr 1fr}
+  .lay__body{padding-left:1.3rem}
+  .brand svg{height:52px}
+  .topnav{width:100%;justify-content:space-between;gap:.7rem}
+  .topnav a:not(.btn){font-size:.82rem}
+  .btn{padding:.8rem 1.2rem;font-size:.9rem}
+  .tl__step{padding-right:0}
+}
+@media (max-width:520px){
+  .topnav{gap:.6rem 1rem}
+  .topnav a:not(.btn){font-size:.8rem}
+  .topnav .btn{width:100%;justify-content:center;margin-top:.2rem}
+}
+@media (max-width:340px){
+  .topnav a:not(.btn){display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+
+<style>
+/* audience switcher */
+.switch{background:var(--ink);color:#C3D4E4;font-size:.82rem}
+.switch__in{display:flex;align-items:center;justify-content:center;gap:.9rem;padding:.55rem 0;
+  flex-wrap:wrap;text-align:center}
+.switch a{color:var(--lime);font-weight:600;text-decoration:none;white-space:nowrap}
+.switch a:hover{text-decoration:underline}
+.switch__sep{opacity:.35}
+
+/* audience chooser on the homepage */
+.choose{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:2rem}
+.pick{border:1px solid var(--line);border-radius:8px;background:#fff;padding:2rem;
+  display:flex;flex-direction:column;text-decoration:none;color:inherit;
+  transition:transform .15s ease,box-shadow .15s ease}
+.pick:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(12,31,53,.1)}
+.pick:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+.pick--green{border-color:var(--green);box-shadow:0 0 0 2px rgba(30,144,35,.12)}
+.pick__k{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--green);margin-bottom:.9rem}
+.pick__h{font-family:var(--display);font-size:1.6rem;line-height:1.2;margin-bottom:.7rem}
+.pick__p{font-size:.93rem;color:var(--slate);flex:1;margin-bottom:1.3rem}
+.pick__go{font-weight:700;font-size:.93rem;color:var(--green)}
+.pick__where{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--slate);margin-top:1rem;padding-top:.9rem;border-top:1px solid var(--line)}
+
+/* margin illustration */
+.mi{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.6rem}
+.mi__c{border:1px solid var(--line);border-radius:6px;background:#fff;padding:1.3rem;text-align:center}
+.mi__c--hero{border-color:var(--green);background:var(--green-l)}
+.mi__k{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--slate);margin-bottom:.5rem}
+.mi__v{font-family:var(--display);font-size:1.7rem;line-height:1.1;color:var(--ink)}
+.mi__c--hero .mi__v{color:var(--green)}
+.mi__s{font-size:.78rem;color:var(--slate);margin-top:.35rem}
+
+/* tier table */
+.tt{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);
+  border-radius:6px;overflow:hidden;margin-top:1.4rem}
+.tt th{font-family:var(--mono);font-size:.64rem;letter-spacing:.11em;text-transform:uppercase;
+  color:#fff;background:var(--ink);text-align:left;padding:.75rem .95rem;font-weight:500}
+.tt td{padding:.85rem .95rem;border-bottom:1px solid var(--paper-2);font-size:.9rem}
+.tt tr:last-child td{border-bottom:none}
+.tt td:first-child{font-family:var(--display);font-size:1.02rem;white-space:nowrap}
+.tt .num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+.note-band{border:1px solid var(--line);border-left:3px solid var(--amber,#B57A1F);border-radius:5px;
+  background:#FDFaF4;padding:1.3rem 1.5rem;margin-top:1.6rem}
+.note-band h3{margin-bottom:.4rem}
+.note-band p{font-size:.9rem;color:var(--slate)}
+
+@media (max-width:860px){ .choose{grid-template-columns:1fr} .mi{grid-template-columns:1fr 1fr} }
+@media (max-width:640px){
+  .mi{grid-template-columns:1fr}
+  .tt,.tt tbody,.tt tr,.tt td{display:block;width:100%}
+  .tt{border:none;background:transparent}
+  .tt thead{display:none}
+  .tt tr{border:1px solid var(--line);border-radius:6px;background:#fff;margin-bottom:.8rem;
+    padding:1rem 1.1rem}
+  .tt tr:last-child{margin-bottom:0}
+  .tt td{border:none;padding:.18rem 0;font-size:.86rem;display:flex;justify-content:space-between;gap:1rem}
+  .tt td:first-child{display:block;font-size:1.05rem;margin-bottom:.5rem;white-space:normal}
+  .tt td:nth-child(2)::before{content:"Clients you manage";color:var(--slate)}
+  .tt td:nth-child(3)::before{content:"Console users";color:var(--slate)}
+}
+</style>
+
+<style>
+.tagline{display:block;text-transform:none;font-family:var(--display);font-weight:500;
+  font-size:clamp(1.25rem,2.2vw,1.65rem);letter-spacing:-.01em;line-height:1.2;color:var(--green)}
+.tagline__sub{display:block;text-transform:uppercase;font-family:var(--body);font-weight:700;font-size:.8rem;
+  letter-spacing:.12em;color:var(--slate);margin-top:.4rem}
+</style>
+<style>
+/* ---- full-measure text ---- */
+.lede{max-width:none}
+.head{max-width:none}
+.hero__lede{max-width:none}
+.head .lede{max-width:none}
+.pick__p{max-width:none}
+.foot__note{max-width:none}
+.card p, .tier p{max-width:none}
+.layer__body p{max-width:none}
+
+/* ---- tagline ---- */
+.tagline{font-size:clamp(1.7rem,3.1vw,2.5rem);line-height:1.15}
+.tagline__sub{font-size:.9rem;letter-spacing:.14em;margin-top:.55rem}
+
+/* ---- section headings: larger and bolder ---- */
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.15em}
+.head h2{font-size:clamp(2rem,3.9vw,3rem);font-weight:600}
+.card h3, .pk__item h3{font-size:1.14rem;font-weight:700}
+.card__k{font-size:.74rem;font-weight:700;letter-spacing:.13em}
+.ev h3{font-size:1.55rem;font-weight:600}
+.tl__step h3{font-size:1.14rem;font-weight:700}
+.pick__h{font-size:1.75rem}
+.stack__title{font-size:1.24rem}
+
+/* ---- hero headline on one line ---- */
+.hero h1{max-width:none}
+.hero h1 .l2{display:block}
+
+/* ---- footer ---- */
+.foot svg{height:58px}
+.foot__grid{grid-template-columns:1.6fr 1fr 1fr 1fr;gap:2.2rem}
+.foot__brand p{max-width:46ch}
+@media (max-width:1080px){ .foot__grid{grid-template-columns:1fr 1fr} }
+@media (max-width:640px){ .foot__grid{grid-template-columns:1fr} .foot svg{height:46px} }
+</style>
+<style>
+/* ---- nav: five links fit beside the logo on laptops ---- */
+@media (max-width:1440px) and (min-width:1081px){
+  .topnav{gap:.75rem}
+  .topnav a:not(.btn){font-size:.84rem}
+}
+@media (max-width:1180px) and (min-width:1000px){
+  .topnav{gap:.75rem}
+  .topnav a:not(.btn){font-size:.8rem}
+  .topnav .btn{padding:.55rem .85rem!important;font-size:.85rem}
+}
+/* ---- partner programme panel (hero) ---- */
+.gain{list-style:none;display:grid;gap:.95rem}
+.gain li{display:grid;gap:.15rem;padding-left:1.3rem;position:relative}
+.gain li::before{content:"";position:absolute;left:0;top:.5em;width:.5rem;height:.5rem;border-radius:50%;background:var(--lime)}
+.gain b{font-size:.95rem;color:#fff;font-weight:600}
+.gain span{font-size:.84rem;color:#A9BED4;line-height:1.5}
+.gain__cta{text-decoration:none;transition:background .15s ease}
+.gain__cta:hover{background:var(--green-d)}
+.gain__cta:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+.gain__v{font-family:var(--display);font-size:1.2rem;line-height:1.25;color:#fff}
+/* ---- hero promise line ---- */
+.hero__promise{font-family:var(--display);font-size:clamp(1.15rem,1.7vw,1.4rem);font-weight:500;
+  color:var(--ink);margin:-1.1rem 0 1.8rem;letter-spacing:-.01em;line-height:1.3}
+
+/* ---- what you can sell: expandable capability layers ---- */
+.band--rule{border-top:1px solid var(--line)}
+.sell{margin-top:.4rem}
+.sell__layer{border-bottom:1px solid var(--paper-3);background:#fff}
+.sell__layer:last-child{border-bottom:none}
+.sell__layer summary{list-style:none;cursor:pointer;display:grid;
+  grid-template-columns:auto auto minmax(12rem,1fr) 2fr auto;gap:.5rem 1rem;align-items:baseline;
+  padding:1.05rem 1.4rem}
+.sell__layer summary::-webkit-details-marker{display:none}
+.sell__layer summary:hover{background:var(--paper)}
+.sell__layer summary:focus-visible{outline:2px solid var(--green);outline-offset:-2px}
+.sell__dot{width:.6rem;height:.6rem;border-radius:50%;background:var(--green);align-self:center}
+.sell__n{font-family:var(--mono);font-size:.72rem;color:var(--slate)}
+.sell__name{font-weight:700;font-size:1rem;color:var(--ink)}
+.sell__sum{font-size:.88rem;color:var(--slate);line-height:1.5}
+.sell__mark{font-family:var(--mono);font-size:1.1rem;color:var(--green);line-height:1;
+  transition:transform .18s ease;align-self:center}
+.sell__layer[open] .sell__mark{transform:rotate(45deg)}
+.sell__body{padding:0 1.4rem 1.3rem 3.4rem}
+.sell__body p{font-size:.88rem;color:var(--slate);margin-bottom:.8rem}
+.sell__body .chips{margin-bottom:.2rem}
+.sell__aside{font-size:.8rem!important;margin:.8rem 0 0!important;font-style:italic}
+.sell__layer--mdr summary{background:var(--green-l)}
+.sell__layer--mdr summary:hover{background:#DDEEDA}
+.sell__close{margin-top:1.4rem;border:1px solid var(--line);border-left:3px solid var(--green);
+  border-radius:4px;background:#fff;padding:1.3rem 1.6rem;font-family:var(--display);font-weight:500;
+  font-size:clamp(1.25rem,2.2vw,1.65rem);line-height:1.25;letter-spacing:-.01em;color:var(--ink)}
+@media (max-width:860px){
+  .sell__layer summary{grid-template-columns:auto auto 1fr auto;padding:1rem 1.1rem}
+  .sell__sum{grid-column:3/4;grid-row:2}
+  .sell__body{padding:0 1.1rem 1.2rem 1.1rem}
+}
+</style>
+<style>
+/* partner services */
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem}
+.svc{display:flex;flex-direction:column}
+.svc p{flex:1;margin-bottom:1.1rem}
+.card__k--add{color:var(--slate)}
+.svc-group{font-family:var(--mono);font-size:.74rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ink);margin:2rem 0 .9rem;padding-top:1.2rem;border-top:1px solid var(--line)}
+.svc-grid--3{grid-template-columns:repeat(3,1fr)}
+.card--new{border-color:var(--green);box-shadow:0 0 0 2px rgba(30,144,35,.12)}
+.svc-also{margin-top:1.2rem;font-size:.9rem;color:var(--slate)}
+.partner-form{margin-top:1.8rem;scroll-margin-top:1rem}
+.opt{font-weight:400;color:var(--slate)}
+/* ACE section */
+.ace-em{color:var(--lime);font-style:italic}
+.ace-top{display:grid;grid-template-columns:1.6fr 1fr;gap:2.4rem;align-items:center;margin-bottom:2.2rem}
+.btn--ghost{border-color:rgba(255,255,255,.55);color:var(--paper)}
+.btn--ghost:hover{background:var(--paper);color:var(--ink)}
+.ace-stat{border:1px solid #2A4E80;border-radius:8px;background:var(--ink-2);padding:1.4rem 1.6rem;text-align:center}
+.ace-stat__row{display:flex;align-items:baseline;justify-content:center;gap:.6rem}
+.ace-stat__row b{font-family:var(--display);font-weight:500;font-size:2.6rem;line-height:1;color:var(--paper)}
+.ace-stat__row span{color:#A9BED4;font-size:.95rem}
+.ace-stat__row--hi b{color:var(--lime)}
+.ace-stat__arrow{color:#8FC98A;font-size:1.3rem;margin:.3rem 0}
+.ace-stat p{font-size:.75rem;color:#7E9AC0;margin-top:.8rem}
+.ace-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem 1.4rem}
+.ace-card{border-top:2px solid rgba(255,255,255,.22);padding-top:1rem}
+.ace-card p{font-size:.9rem;color:#A9BED4}
+.ace-ladder{margin-top:2.2rem;border:1px solid #2A4E80;border-radius:8px;padding:1.2rem 1.4rem;
+  display:flex;justify-content:space-between;align-items:center;gap:1rem 2rem;flex-wrap:wrap}
+.ace-ladder__h{color:#DCE8F5;font-size:.95rem}
+.ace-ladder ol{list-style:none;display:flex;gap:.4rem;flex-wrap:wrap;counter-reset:s}
+.ace-ladder li{counter-increment:s;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;color:var(--ink);
+  background:#C9E7B5;border-radius:100px;padding:.3rem .8rem}
+.ace-ladder li:nth-child(2){background:#A9D88A}.ace-ladder li:nth-child(3){background:#8FCB65}
+.ace-ladder li:nth-child(4){background:var(--lime)}
+.ace-ladder li::before{content:counter(s) ". "}
+.ace-defend{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:1.6rem}
+.ace-defend b{display:block;color:var(--paper);font-family:var(--display);font-weight:500;font-size:1.2rem}
+.ace-defend span{font-size:.88rem;color:#A9BED4}
+@media (max-width:1080px){.ace-top{grid-template-columns:1fr}.ace-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.ace-grid,.ace-defend{grid-template-columns:1fr}}
+.ai-feature{display:grid;gap:.45rem;background:var(--ink);color:var(--paper);border-radius:8px;
+  padding:clamp(1.3rem,2.4vw,1.9rem) clamp(1.3rem,2.6vw,2.2rem);margin-bottom:1.4rem;text-decoration:none;
+  transition:transform .15s ease,box-shadow .15s ease}
+.ai-feature:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(12,31,53,.18)}
+.ai-feature:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+.ai-feature__k{font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8FC98A}
+.ai-feature__h{font-family:var(--display);font-size:clamp(1.5rem,2.8vw,2.2rem);line-height:1.15}
+.ai-feature__h em{color:var(--lime);font-style:italic}
+.ai-feature__p{color:#A9BED4;font-size:.95rem;max-width:70ch}
+.ai-feature__go{font-weight:700;font-size:.92rem;color:var(--lime);margin-top:.3rem}
+.svc__go{font-weight:700;font-size:.9rem;color:var(--green);text-decoration:none}
+.svc__go:hover{color:var(--green-d);text-decoration:underline}
+.svc__go:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+@media (max-width:1080px){.svc-grid,.svc-grid--3{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.svc-grid,.svc-grid--3{grid-template-columns:1fr}}
+</style>
+<style>
+.sp-hero{padding:clamp(1.6rem,3vw,2.6rem) 0;border-bottom:1px solid var(--line)}
+.sp-back{display:inline-block;font-size:.88rem;font-weight:600;color:var(--slate);text-decoration:none;margin-bottom:1.4rem}
+.sp-back:hover{color:var(--ink);text-decoration:underline}
+.sp-hero h1 em{display:block;font-style:italic;color:var(--green)}
+.steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.sc-tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.2rem}
+.sc-tab{font-family:var(--body);font-weight:600;font-size:.9rem;padding:.6rem 1rem;border-radius:100px;cursor:pointer;
+  border:1.5px solid var(--line);background:#fff;color:var(--ink)}
+.sc-tab[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.sc-tab:focus-visible,.sc-replay:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.sc{border:1px solid var(--line);border-radius:8px;background:#fff;padding:1.4rem 1.5rem}
+.js .sc[data-hidden]{display:none}
+.sc + .sc{margin-top:1rem}.js .sc + .sc{margin-top:0}
+.sc__h{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:1rem}
+.sc__h h3{font-family:var(--display);font-weight:500;font-size:1.4rem}
+.sc__mods{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--slate)}
+.sc__steps{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem}
+.st{border:1px solid var(--line);border-top:4px solid var(--line);border-radius:6px;padding:.9rem 1rem;display:grid;gap:.55rem;
+  transition:opacity .3s ease,transform .3s ease}
+.js .st{opacity:.35}.js .st.on{opacity:1}
+.st--low{border-top-color:#C9E7B5}.st--mid{border-top-color:#E8C35A}.st--high{border-top-color:#E0893A}.st--critical{border-top-color:#B4413A}
+.st__lvl{font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--slate)}
+.st__sig,.st__act{font-size:.87rem;line-height:1.5;color:var(--slate)}
+.st__sig b,.st__act b{display:block;font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+.st__act{color:var(--ink)}.st__act b{color:var(--green)}
+.sc__ctl{display:none;gap:1rem;align-items:center;margin-top:1.1rem}.js .sc__ctl{display:flex}
+.sc-replay{background:none;border:none;font-family:var(--body);font-weight:600;color:var(--slate);cursor:pointer;text-decoration:underline}
+.sc-note{font-size:.8rem;color:var(--slate);margin-top:.9rem}
+@media (max-width:1080px){.sc__steps,.steps4{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.sc__steps,.steps4{grid-template-columns:1fr}}
+.btn--ghost{border-color:rgba(255,255,255,.55);color:var(--paper)}
+.btn--ghost:hover{background:var(--paper);color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="switch"><div class="wrap switch__in"><span><b>D2UGuard is sold only through partners in Australia and New Zealand.</b> We do not sell direct in your market.</span><span class="switch__sep">·</span><a href="/protect">Based in Fiji or the Pacific?</a></div></div><div class="topbar"><div class="wrap topbar__in">
+  <a class="brand" href="/" aria-label="D2UGuard home"><svg viewBox="0 0 360 100" role="img" aria-label="D2UGuard"><g transform="translate(0 0)"><circle cx="50" cy="50" r="38" fill="none" stroke="#0C1F35" stroke-width="10" stroke-linecap="round" stroke-dasharray="179.07 59.69" transform="rotate(-18 50 50)"/><circle cx="50" cy="50" r="21" fill="none" stroke="#18a41b" stroke-width="10" stroke-linecap="round" stroke-dasharray="98.96 32.99" transform="rotate(162 50 50)"/><circle cx="50" cy="50" r="7.5" fill="#18a41b"/></g><g transform="translate(113 66)"><path fill="#0C1F35" d="M3.404 0.0V-31.648H17.112Q22.54 -31.648 26.22 -29.945999999999998Q29.9 -28.244 31.808999999999997 -24.747999999999998Q33.717999999999996 -21.252 33.717999999999996 -15.824Q33.717999999999996 -10.442 31.808999999999997 -6.923Q29.9 -3.404 26.22 -1.702Q22.54 0.0 17.112 0.0ZM13.57 -7.59H16.928Q18.584 -7.59 19.802999999999997 -8.05Q21.022 -8.51 21.804 -9.384Q22.586 -10.258 22.954 -11.546Q23.322 -12.834 23.322 -14.443999999999999V-17.204Q23.322 -18.814 22.954 -20.102Q22.586 -21.39 21.804 -22.264Q21.022 -23.137999999999998 19.802999999999997 -23.598Q18.584 -24.058 16.928 -24.058H13.57Z M36.431999999999995 0.0V-2.208Q36.431999999999995 -4.14 37.25999999999999 -5.865Q38.087999999999994 -7.59 39.491 -9.131Q40.894 -10.672 42.596 -12.075Q44.297999999999995 -13.478 46.092 -14.812Q47.931999999999995 -16.192 49.542 -17.342Q51.152 -18.492 52.164 -19.688000000000002Q53.176 -20.884 53.176 -22.355999999999998Q53.176 -23.23 52.762 -23.989Q52.348 -24.748 51.497 -25.231Q50.646 -25.714 49.22 -25.714Q47.794 -25.714 46.80499999999999 -25.162Q45.815999999999995 -24.61 45.28699999999999 -23.621Q44.757999999999996 -22.631999999999998 44.757999999999996 -21.39V-20.47H36.57Q36.524 -20.746 36.524 -20.999Q36.524 -21.252 36.524 -21.482Q36.524 -24.748 38.019 -27.14Q39.513999999999996 -29.532 42.527 -30.866Q45.54 -32.2 50.093999999999994 -32.2Q52.9 -32.2 55.153999999999996 -31.533Q57.408 -30.866 58.995 -29.601Q60.581999999999994 -28.336 61.43299999999999 -26.588Q62.28399999999999 -24.84 62.28399999999999 -22.678Q62.28399999999999 -20.562 61.501999999999995 -18.86Q60.72 -17.158 59.294 -15.686Q57.867999999999995 -14.214 56.02799999999999 -12.834Q54.187999999999995 -11.454 52.025999999999996 -10.028Q50.922 -9.292 50.232 -8.809000000000001Q49.541999999999994 -8.326 49.22 -8.096Q48.897999999999996 -7.866 48.806 -7.774H62.652V0.0Z M82.432 0.552Q77.464 0.552 73.945 -0.9430000000000001Q70.426 -2.438 68.53999999999999 -5.405Q66.654 -8.372 66.654 -12.741999999999999V-31.648H76.82V-12.879999999999999Q76.82 -10.35 78.19999999999999 -8.693999999999999Q79.58 -7.038 82.386 -7.038Q85.19200000000001 -7.038 86.595 -8.693999999999999Q87.998 -10.35 87.998 -12.879999999999999V-31.648H98.164V-12.741999999999999Q98.164 -8.372 96.301 -5.405Q94.438 -2.438 90.91900000000001 -0.9430000000000001Q87.4 0.552 82.432 0.552Z"/><path fill="#18a41b" d="M117.806 0.552Q109.894 0.552 105.961 -3.588Q102.02799999999999 -7.728 102.02799999999999 -15.824Q102.02799999999999 -21.252 104.05199999999999 -24.886Q106.076 -28.52 109.94 -30.36Q113.804 -32.2 119.27799999999999 -32.2Q122.59 -32.2 125.511 -31.441000000000003Q128.432 -30.682 130.663 -29.186999999999998Q132.894 -27.692 134.136 -25.438000000000002Q135.378 -23.184 135.378 -20.194H125.672Q125.672 -21.206 125.189 -22.034Q124.706 -22.862 123.878 -23.436999999999998Q123.05 -24.012 121.969 -24.311Q120.888 -24.61 119.692 -24.61Q117.898 -24.61 116.518 -24.127Q115.138 -23.644 114.241 -22.677999999999997Q113.344 -21.712 112.88399999999999 -20.378Q112.42399999999999 -19.044 112.42399999999999 -17.296V-14.352Q112.42399999999999 -12.052 113.22899999999998 -10.419Q114.03399999999999 -8.786 115.667 -7.912Q117.3 -7.038 119.692 -7.038Q121.30199999999999 -7.038 122.65899999999999 -7.521Q124.01599999999999 -8.004 124.844 -8.924Q125.672 -9.844 125.672 -11.04V-11.224H118.496V-17.664H135.378V0.0H130.134L129.12199999999999 -3.128Q127.696 -1.932 125.994 -1.104Q124.292 -0.276 122.268 0.138Q120.244 0.552 117.806 0.552Z M147.798 0.552Q143.474 0.552 141.404 -1.84Q139.334 -4.232 139.334 -8.556V-24.288H148.488V-9.66Q148.488 -8.924 148.695 -8.28Q148.902 -7.636 149.26999999999998 -7.176Q149.638 -6.716 150.236 -6.463Q150.834 -6.21 151.57 -6.21Q152.72 -6.21 153.571 -6.739Q154.422 -7.268 154.905 -8.142Q155.388 -9.016 155.388 -10.028V-24.288H164.542V0.0H157.04399999999998L156.584 -3.6799999999999997H156.262Q155.388 -2.346 154.031 -1.3800000000000001Q152.674 -0.414 151.06400000000002 0.06900000000000003Q149.454 0.552 147.798 0.552Z M175.674 0.552Q173.788 0.552 172.224 0.20700000000000002Q170.66 -0.138 169.51 -0.9430000000000001Q168.36 -1.748 167.739 -3.059Q167.118 -4.37 167.118 -6.256Q167.118 -8.97 168.245 -10.672Q169.37199999999999 -12.374 171.534 -13.294Q173.696 -14.214 176.801 -14.559000000000001Q179.906 -14.904 183.908 -14.904V-16.1Q183.908 -17.112 183.425 -17.732999999999997Q182.942 -18.354 182.16 -18.676000000000002Q181.378 -18.998 180.36599999999999 -18.998Q179.584 -18.998 178.756 -18.814Q177.928 -18.63 177.399 -18.17Q176.87 -17.71 176.87 -16.882V-16.698H167.854Q167.808 -16.882 167.808 -17.020000000000003Q167.808 -17.158 167.808 -17.342Q167.808 -19.596 169.257 -21.275Q170.706 -22.954 173.535 -23.897Q176.364 -24.84 180.504 -24.84Q183.862 -24.84 186.714 -24.104Q189.566 -23.368 191.31400000000002 -21.643Q193.062 -19.918 193.062 -16.928V-7.452Q193.062 -6.716 193.43 -6.186999999999999Q193.798 -5.6579999999999995 194.534 -5.6579999999999995H196.19V-0.368Q195.638 -0.046 194.373 0.253Q193.108 0.552 191.406 0.552Q189.566 0.552 188.186 0.18400000000000002Q186.806 -0.184 185.95499999999998 -0.874Q185.10399999999998 -1.564 184.782 -2.484H184.46Q183.494 -1.6099999999999999 182.22899999999998 -0.9199999999999999Q180.964 -0.22999999999999998 179.35399999999998 0.16100000000000003Q177.744 0.552 175.674 0.552ZM179.4 -5.152Q180.274 -5.152 181.079 -5.404999999999999Q181.88400000000001 -5.6579999999999995 182.52800000000002 -6.095Q183.172 -6.532 183.54 -7.1530000000000005Q183.908 -7.774 183.908 -8.51V-10.58Q181.194 -10.58 179.515 -10.166Q177.836 -9.752 177.054 -9.062000000000001Q176.272 -8.372 176.272 -7.452Q176.272 -6.532 176.732 -6.026Q177.192 -5.52 177.905 -5.336Q178.618 -5.152 179.4 -5.152Z M197.57 0.0V-24.288H205.068L205.666 -20.608H205.988Q206.586 -21.988 207.529 -22.954Q208.472 -23.919999999999998 209.714 -24.403Q210.95600000000002 -24.886 212.336 -24.886Q213.256 -24.886 213.99200000000002 -24.701999999999998Q214.728 -24.518 215.05 -24.334V-16.652H212.106Q210.63400000000001 -16.652 209.599 -16.261Q208.564 -15.87 207.94299999999998 -15.111Q207.322 -14.352 207.023 -13.271Q206.724 -12.19 206.724 -10.81V0.0Z M225.53799999999998 0.552Q222.31799999999998 0.552 220.01799999999997 -0.851Q217.718 -2.254 216.499 -5.083Q215.28 -7.912 215.28 -12.19Q215.28 -16.422 216.499 -19.228Q217.718 -22.034 220.01799999999997 -23.436999999999998Q222.31799999999998 -24.84 225.53799999999998 -24.84Q226.826 -24.84 228.04500000000002 -24.541Q229.264 -24.242 230.299 -23.621000000000002Q231.334 -23.0 232.024 -22.034H232.346V-33.35H241.5V0.0H234.048L233.404 -3.4499999999999997H233.082Q231.79399999999998 -1.38 229.862 -0.4139999999999999Q227.93 0.552 225.53799999999998 0.552ZM228.39 -6.21Q229.816 -6.21 230.713 -6.9Q231.60999999999999 -7.59 232.024 -8.763Q232.438 -9.936 232.438 -11.362V-12.879999999999999Q232.438 -13.938 232.208 -14.881Q231.978 -15.824 231.495 -16.537Q231.012 -17.25 230.23000000000002 -17.664Q229.448 -18.078 228.39 -18.078Q226.964 -18.078 226.09 -17.48Q225.216 -16.882 224.825 -15.824000000000002Q224.434 -14.766 224.434 -13.34V-10.902Q224.434 -9.475999999999999 224.825 -8.418Q225.216 -7.359999999999999 226.09 -6.785Q226.964 -6.21 228.39 -6.21Z"/></g></svg></a>
+  <nav class="topnav"><a href="/partners#why">Why partner</a><a href="/partners#ace">ACE</a><a href="/partners#what-you-can-sell">What you can sell</a><a href="/partners#tiers">Tiers</a><a href="/partners#commitments">Commitments</a><a href="/partners#partner-form">Become a partner</a>
+    <a class="btn btn--primary" href="/partners?interest=numbers#partner-form" style="padding:.62rem 1.1rem">Book a numbers session</a>
+  </nav>
+</div></div>
+<main>
+<header class="sp-hero">
+  <div class="wrap">
+    <a class="sp-back" href="/partners#ace">&larr; Back to ACE</a>
+    <span class="eyebrow" style="display:block;margin-bottom:1rem">ACE in action</span>
+    <h1 style="margin-bottom:1.2rem">From noise to <em>one list of next steps.</em></h1>
+    <p class="lede">Weak signals on their own are easy to ignore. ACE links them across every D2UGuard service, so an
+      open port, an unmanaged device and a run of failed sign-ins become one story with one clear action. Step through
+      four scenarios to see how ACE escalates as the evidence builds.</p>
+  </div>
+</header>
+
+<section class="band">
+  <div class="wrap">
+    <div class="sc-tabs" role="tablist" aria-label="Scenarios"><button class="sc-tab" type="button" role="tab" aria-selected="true" data-i="0">Exposed service under attack</button><button class="sc-tab" type="button" role="tab" aria-selected="false" data-i="1">Refused patch, then malware</button><button class="sc-tab" type="button" role="tab" aria-selected="false" data-i="2">One flaw, many clients</button><button class="sc-tab" type="button" role="tab" aria-selected="false" data-i="3">Stolen account driving an AI agent</button></div>
+    <section class="sc" data-i="0" aria-label="Exposed service under attack">
+      <div class="sc__h"><h3>Exposed service under attack</h3><span class="sc__mods">Threats · Exposure · Network</span></div>
+      <ol class="sc__steps">
+        <li class="st st--low"><span class="st__lvl">Low</span>
+          <span class="st__sig"><b>Signal</b>A remote access port is found open to the internet.</span>
+          <span class="st__act"><b>ACE</b>Recommend restricting it to known addresses.</span></li>
+        <li class="st st--mid"><span class="st__lvl">Mid</span>
+          <span class="st__sig"><b>Signal</b>A known vulnerability is found on the same service.</span>
+          <span class="st__act"><b>ACE</b>Raise the priority and recommend patching it.</span></li>
+        <li class="st st--high"><span class="st__lvl">High</span>
+          <span class="st__sig"><b>Signal</b>Failed sign-in attempts start against the exposed service.</span>
+          <span class="st__act"><b>ACE</b>Recommend blocking the source addresses.</span></li>
+        <li class="st st--critical"><span class="st__lvl">Critical</span>
+          <span class="st__sig"><b>Signal</b>Attempts continue from new addresses.</span>
+          <span class="st__act"><b>ACE</b>Block the sources, check for any successful sign-in and open an incident.</span></li>
+      </ol>
+      <div class="sc__ctl"><button class="btn btn--line sc-next" type="button">Next signal &rarr;</button>
+        <button class="sc-replay" type="button">Replay</button></div>
+    </section>
+    <section class="sc" data-i="1" data-hidden aria-label="Refused patch, then malware">
+      <div class="sc__h"><h3>Refused patch, then malware</h3><span class="sc__mods">Assets · Threats</span></div>
+      <ol class="sc__steps">
+        <li class="st st--low"><span class="st__lvl">Low</span>
+          <span class="st__sig"><b>Signal</b>A critical patch is missing on a laptop.</span>
+          <span class="st__act"><b>ACE</b>Queue it for the next maintenance window.</span></li>
+        <li class="st st--mid"><span class="st__lvl">Mid</span>
+          <span class="st__sig"><b>Signal</b>The user has postponed the patch several times.</span>
+          <span class="st__act"><b>ACE</b>Recommend a forced install window.</span></li>
+        <li class="st st--high"><span class="st__lvl">High</span>
+          <span class="st__sig"><b>Signal</b>Suspicious behaviour appears on the same unpatched device.</span>
+          <span class="st__act"><b>ACE</b>Link the two findings and escalate.</span></li>
+        <li class="st st--critical"><span class="st__lvl">Critical</span>
+          <span class="st__sig"><b>Signal</b>Malware is confirmed on the device.</span>
+          <span class="st__act"><b>ACE</b>Isolate the device, open an incident and name the missing patch as the root cause.</span></li>
+      </ol>
+      <div class="sc__ctl"><button class="btn btn--line sc-next" type="button">Next signal &rarr;</button>
+        <button class="sc-replay" type="button">Replay</button></div>
+    </section>
+    <section class="sc" data-i="2" data-hidden aria-label="One flaw, many clients">
+      <div class="sc__h"><h3>One flaw, many clients</h3><span class="sc__mods">Portfolio view</span></div>
+      <ol class="sc__steps">
+        <li class="st st--low"><span class="st__lvl">Low</span>
+          <span class="st__sig"><b>Signal</b>A new vulnerability is found at one client.</span>
+          <span class="st__act"><b>ACE</b>Handle it in that client’s action list.</span></li>
+        <li class="st st--mid"><span class="st__lvl">Mid</span>
+          <span class="st__sig"><b>Signal</b>The same vulnerability is found across several clients.</span>
+          <span class="st__act"><b>ACE</b>Propose one patch campaign across your portfolio.</span></li>
+        <li class="st st--high"><span class="st__lvl">High</span>
+          <span class="st__sig"><b>Signal</b>A public exploit is released.</span>
+          <span class="st__act"><b>ACE</b>Move the campaign to the top of the queue.</span></li>
+        <li class="st st--critical"><span class="st__lvl">Critical</span>
+          <span class="st__sig"><b>Signal</b>Exploit attempts are seen at a client.</span>
+          <span class="st__act"><b>ACE</b>Prioritise the most exposed clients first and escalate the campaign.</span></li>
+      </ol>
+      <div class="sc__ctl"><button class="btn btn--line sc-next" type="button">Next signal &rarr;</button>
+        <button class="sc-replay" type="button">Replay</button></div>
+    </section>
+    <section class="sc" data-i="3" data-hidden aria-label="Stolen account driving an AI agent">
+      <div class="sc__h"><h3>Stolen account driving an AI agent</h3><span class="sc__mods">Threats · AI Governance &amp; Security</span></div>
+      <ol class="sc__steps">
+        <li class="st st--low"><span class="st__lvl">Low</span>
+          <span class="st__sig"><b>Signal</b>A leaked credential is found on the dark web.</span>
+          <span class="st__act"><b>ACE</b>Recommend a password change.</span></li>
+        <li class="st st--mid"><span class="st__lvl">Mid</span>
+          <span class="st__sig"><b>Signal</b>An unusual sign-in is seen for the same account.</span>
+          <span class="st__act"><b>ACE</b>Recommend a reset and MFA enrolment, and review the user’s AI agents.</span></li>
+        <li class="st st--high"><span class="st__lvl">High</span>
+          <span class="st__sig"><b>Signal</b>The account’s AI agent starts reaching for sensitive files.</span>
+          <span class="st__act"><b>ACE</b>Link the identity and AI findings into one action.</span></li>
+        <li class="st st--critical"><span class="st__lvl">Critical</span>
+          <span class="st__sig"><b>Signal</b>The pattern continues.</span>
+          <span class="st__act"><b>ACE</b>Revoke sessions, suspend the agent and block the account until the user is verified.</span></li>
+      </ol>
+      <div class="sc__ctl"><button class="btn btn--line sc-next" type="button">Next signal &rarr;</button>
+        <button class="sc-replay" type="button">Replay</button></div>
+    </section>
+    <p class="sc-note">Illustrative scenarios. The actions ACE takes depend on the services and policies in place for each client.</p>
+  </div>
+</section>
+
+<section class="band band--tint">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">How ACE turns noise into one list</span><h2>Four steps, every day, for every client</h2></div>
+    <div class="steps4">
+      <div class="card"><div class="card__k">1 · Accumulate</div><p>Network, assets, threats, exposure and AI governance feed one engine.</p></div>
+      <div class="card"><div class="card__k">2 · Correlate</div><p>Weak signals about the same device or person become one insight.</p></div>
+      <div class="card"><div class="card__k">3 · Prioritise</div><p>One score and one ranked list, ordered by severity and evidence.</p></div>
+      <div class="card"><div class="card__k">4 · Act and report</div><p>Each fix goes through the right control, and the monthly brief shows what changed.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="cta sp-cta">
+      <div>
+        <span class="eyebrow eyebrow--l" style="display:block;margin-bottom:1rem">See ACE live</span>
+        <h2>Run ACE on your own client scenarios</h2>
+        <p>Book a partner demo and we will walk you through the console, the score and the monthly brief.</p>
+      </div>
+      <div class="btn-row" style="justify-content:flex-end">
+        <a class="btn btn--onDark" href="/partners?interest=demo#partner-form">Book a demo</a>
+        <a class="btn btn--ghost" href="/partners/control-hub-ace">Explore Control Hub</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="foot"><div class="wrap">
+  <div class="foot__grid">
+    <div class="foot__brand"><svg viewBox="0 0 360 100" role="img" aria-label="D2UGuard"><g transform="translate(0 0)"><circle cx="50" cy="50" r="38" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" stroke-dasharray="179.07 59.69" transform="rotate(-18 50 50)"/><circle cx="50" cy="50" r="21" fill="none" stroke="#7DC242" stroke-width="10" stroke-linecap="round" stroke-dasharray="98.96 32.99" transform="rotate(162 50 50)"/><circle cx="50" cy="50" r="7.5" fill="#7DC242"/></g><g transform="translate(113 66)"><path fill="#FFFFFF" d="M3.404 0.0V-31.648H17.112Q22.54 -31.648 26.22 -29.945999999999998Q29.9 -28.244 31.808999999999997 -24.747999999999998Q33.717999999999996 -21.252 33.717999999999996 -15.824Q33.717999999999996 -10.442 31.808999999999997 -6.923Q29.9 -3.404 26.22 -1.702Q22.54 0.0 17.112 0.0ZM13.57 -7.59H16.928Q18.584 -7.59 19.802999999999997 -8.05Q21.022 -8.51 21.804 -9.384Q22.586 -10.258 22.954 -11.546Q23.322 -12.834 23.322 -14.443999999999999V-17.204Q23.322 -18.814 22.954 -20.102Q22.586 -21.39 21.804 -22.264Q21.022 -23.137999999999998 19.802999999999997 -23.598Q18.584 -24.058 16.928 -24.058H13.57Z M36.431999999999995 0.0V-2.208Q36.431999999999995 -4.14 37.25999999999999 -5.865Q38.087999999999994 -7.59 39.491 -9.131Q40.894 -10.672 42.596 -12.075Q44.297999999999995 -13.478 46.092 -14.812Q47.931999999999995 -16.192 49.542 -17.342Q51.152 -18.492 52.164 -19.688000000000002Q53.176 -20.884 53.176 -22.355999999999998Q53.176 -23.23 52.762 -23.989Q52.348 -24.748 51.497 -25.231Q50.646 -25.714 49.22 -25.714Q47.794 -25.714 46.80499999999999 -25.162Q45.815999999999995 -24.61 45.28699999999999 -23.621Q44.757999999999996 -22.631999999999998 44.757999999999996 -21.39V-20.47H36.57Q36.524 -20.746 36.524 -20.999Q36.524 -21.252 36.524 -21.482Q36.524 -24.748 38.019 -27.14Q39.513999999999996 -29.532 42.527 -30.866Q45.54 -32.2 50.093999999999994 -32.2Q52.9 -32.2 55.153999999999996 -31.533Q57.408 -30.866 58.995 -29.601Q60.581999999999994 -28.336 61.43299999999999 -26.588Q62.28399999999999 -24.84 62.28399999999999 -22.678Q62.28399999999999 -20.562 61.501999999999995 -18.86Q60.72 -17.158 59.294 -15.686Q57.867999999999995 -14.214 56.02799999999999 -12.834Q54.187999999999995 -11.454 52.025999999999996 -10.028Q50.922 -9.292 50.232 -8.809000000000001Q49.541999999999994 -8.326 49.22 -8.096Q48.897999999999996 -7.866 48.806 -7.774H62.652V0.0Z M82.432 0.552Q77.464 0.552 73.945 -0.9430000000000001Q70.426 -2.438 68.53999999999999 -5.405Q66.654 -8.372 66.654 -12.741999999999999V-31.648H76.82V-12.879999999999999Q76.82 -10.35 78.19999999999999 -8.693999999999999Q79.58 -7.038 82.386 -7.038Q85.19200000000001 -7.038 86.595 -8.693999999999999Q87.998 -10.35 87.998 -12.879999999999999V-31.648H98.164V-12.741999999999999Q98.164 -8.372 96.301 -5.405Q94.438 -2.438 90.91900000000001 -0.9430000000000001Q87.4 0.552 82.432 0.552Z"/><path fill="#7DC242" d="M117.806 0.552Q109.894 0.552 105.961 -3.588Q102.02799999999999 -7.728 102.02799999999999 -15.824Q102.02799999999999 -21.252 104.05199999999999 -24.886Q106.076 -28.52 109.94 -30.36Q113.804 -32.2 119.27799999999999 -32.2Q122.59 -32.2 125.511 -31.441000000000003Q128.432 -30.682 130.663 -29.186999999999998Q132.894 -27.692 134.136 -25.438000000000002Q135.378 -23.184 135.378 -20.194H125.672Q125.672 -21.206 125.189 -22.034Q124.706 -22.862 123.878 -23.436999999999998Q123.05 -24.012 121.969 -24.311Q120.888 -24.61 119.692 -24.61Q117.898 -24.61 116.518 -24.127Q115.138 -23.644 114.241 -22.677999999999997Q113.344 -21.712 112.88399999999999 -20.378Q112.42399999999999 -19.044 112.42399999999999 -17.296V-14.352Q112.42399999999999 -12.052 113.22899999999998 -10.419Q114.03399999999999 -8.786 115.667 -7.912Q117.3 -7.038 119.692 -7.038Q121.30199999999999 -7.038 122.65899999999999 -7.521Q124.01599999999999 -8.004 124.844 -8.924Q125.672 -9.844 125.672 -11.04V-11.224H118.496V-17.664H135.378V0.0H130.134L129.12199999999999 -3.128Q127.696 -1.932 125.994 -1.104Q124.292 -0.276 122.268 0.138Q120.244 0.552 117.806 0.552Z M147.798 0.552Q143.474 0.552 141.404 -1.84Q139.334 -4.232 139.334 -8.556V-24.288H148.488V-9.66Q148.488 -8.924 148.695 -8.28Q148.902 -7.636 149.26999999999998 -7.176Q149.638 -6.716 150.236 -6.463Q150.834 -6.21 151.57 -6.21Q152.72 -6.21 153.571 -6.739Q154.422 -7.268 154.905 -8.142Q155.388 -9.016 155.388 -10.028V-24.288H164.542V0.0H157.04399999999998L156.584 -3.6799999999999997H156.262Q155.388 -2.346 154.031 -1.3800000000000001Q152.674 -0.414 151.06400000000002 0.06900000000000003Q149.454 0.552 147.798 0.552Z M175.674 0.552Q173.788 0.552 172.224 0.20700000000000002Q170.66 -0.138 169.51 -0.9430000000000001Q168.36 -1.748 167.739 -3.059Q167.118 -4.37 167.118 -6.256Q167.118 -8.97 168.245 -10.672Q169.37199999999999 -12.374 171.534 -13.294Q173.696 -14.214 176.801 -14.559000000000001Q179.906 -14.904 183.908 -14.904V-16.1Q183.908 -17.112 183.425 -17.732999999999997Q182.942 -18.354 182.16 -18.676000000000002Q181.378 -18.998 180.36599999999999 -18.998Q179.584 -18.998 178.756 -18.814Q177.928 -18.63 177.399 -18.17Q176.87 -17.71 176.87 -16.882V-16.698H167.854Q167.808 -16.882 167.808 -17.020000000000003Q167.808 -17.158 167.808 -17.342Q167.808 -19.596 169.257 -21.275Q170.706 -22.954 173.535 -23.897Q176.364 -24.84 180.504 -24.84Q183.862 -24.84 186.714 -24.104Q189.566 -23.368 191.31400000000002 -21.643Q193.062 -19.918 193.062 -16.928V-7.452Q193.062 -6.716 193.43 -6.186999999999999Q193.798 -5.6579999999999995 194.534 -5.6579999999999995H196.19V-0.368Q195.638 -0.046 194.373 0.253Q193.108 0.552 191.406 0.552Q189.566 0.552 188.186 0.18400000000000002Q186.806 -0.184 185.95499999999998 -0.874Q185.10399999999998 -1.564 184.782 -2.484H184.46Q183.494 -1.6099999999999999 182.22899999999998 -0.9199999999999999Q180.964 -0.22999999999999998 179.35399999999998 0.16100000000000003Q177.744 0.552 175.674 0.552ZM179.4 -5.152Q180.274 -5.152 181.079 -5.404999999999999Q181.88400000000001 -5.6579999999999995 182.52800000000002 -6.095Q183.172 -6.532 183.54 -7.1530000000000005Q183.908 -7.774 183.908 -8.51V-10.58Q181.194 -10.58 179.515 -10.166Q177.836 -9.752 177.054 -9.062000000000001Q176.272 -8.372 176.272 -7.452Q176.272 -6.532 176.732 -6.026Q177.192 -5.52 177.905 -5.336Q178.618 -5.152 179.4 -5.152Z M197.57 0.0V-24.288H205.068L205.666 -20.608H205.988Q206.586 -21.988 207.529 -22.954Q208.472 -23.919999999999998 209.714 -24.403Q210.95600000000002 -24.886 212.336 -24.886Q213.256 -24.886 213.99200000000002 -24.701999999999998Q214.728 -24.518 215.05 -24.334V-16.652H212.106Q210.63400000000001 -16.652 209.599 -16.261Q208.564 -15.87 207.94299999999998 -15.111Q207.322 -14.352 207.023 -13.271Q206.724 -12.19 206.724 -10.81V0.0Z M225.53799999999998 0.552Q222.31799999999998 0.552 220.01799999999997 -0.851Q217.718 -2.254 216.499 -5.083Q215.28 -7.912 215.28 -12.19Q215.28 -16.422 216.499 -19.228Q217.718 -22.034 220.01799999999997 -23.436999999999998Q222.31799999999998 -24.84 225.53799999999998 -24.84Q226.826 -24.84 228.04500000000002 -24.541Q229.264 -24.242 230.299 -23.621000000000002Q231.334 -23.0 232.024 -22.034H232.346V-33.35H241.5V0.0H234.048L233.404 -3.4499999999999997H233.082Q231.79399999999998 -1.38 229.862 -0.4139999999999999Q227.93 0.552 225.53799999999998 0.552ZM228.39 -6.21Q229.816 -6.21 230.713 -6.9Q231.60999999999999 -7.59 232.024 -8.763Q232.438 -9.936 232.438 -11.362V-12.879999999999999Q232.438 -13.938 232.208 -14.881Q231.978 -15.824 231.495 -16.537Q231.012 -17.25 230.23000000000002 -17.664Q229.448 -18.078 228.39 -18.078Q226.964 -18.078 226.09 -17.48Q225.216 -16.882 224.825 -15.824000000000002Q224.434 -14.766 224.434 -13.34V-10.902Q224.434 -9.475999999999999 224.825 -8.418Q225.216 -7.359999999999999 226.09 -6.785Q226.964 -6.21 228.39 -6.21Z"/></g></svg>
+      <p>Unified digital defence across Australia, New Zealand, Fiji and the Pacific &mdash; delivered direct in Fiji and the Pacific, and exclusively through accredited partners in Australia and New Zealand.<br>A D2UNet solution.</p></div>
+    <div><h4>Australia</h4><address>D2UNet Pty Ltd<br>Suite 2.03, Building T2A<br>Warawara Circuit, Nirimba Fields<br>NSW 2763, Australia</address></div>
+    <div><h4>New Zealand</h4><address>41 Kittiwake Drive<br>Schnapper Rock<br>Auckland 0632</address></div>
+    <div><h4>Fiji</h4><address>Suite 22, Level 2, Presidents Plaza<br>164 Ratu Mara Road, Samabula<br>Suva, Fiji</address></div>
+  </div>
+  <p class="foot__note">D2UGuard is a managed cybersecurity service from D2UNet Pty Ltd (ABN 48 641 637 890), registered in Fiji as a foreign company (No. 2025RF000002) and in New Zealand (NZBN 9429052088636). In Fiji and the Pacific Islands, D2UGuard is delivered direct to organisations by D2UNet. In Australia and New Zealand, D2UGuard is supplied exclusively through accredited partners, who contract with and support their own clients. Managed Detection &amp; Response is provided 24&times;7 and backed by a global security operations centre, with local escalation and reporting by our own team. Service inclusions and response capabilities vary by plan and partner. Partner pricing varies according to service level, licence volume and applicable partner programme tier. Exact partner pricing is provided under NDA. Nothing on this page is an offer capable of acceptance; services are provided under a written agreement. &copy; 2026 D2UNet Pty Ltd.</p>
+</div></footer><script>
+/* ACE in action: scenario tabs and step-through */
+(function(){
+  document.documentElement.classList.add('js');
+  var tabs = [].slice.call(document.querySelectorAll('.sc-tab')), scs = [].slice.call(document.querySelectorAll('.sc'));
+  function reset(sc){ var st = sc.querySelectorAll('.st'); [].forEach.call(st, function(x,i){ x.classList.toggle('on', i === 0); });
+    sc.querySelector('.sc-next').disabled = false; }
+  function show(i){ tabs.forEach(function(t){ t.setAttribute('aria-selected', t.dataset.i == i ? 'true' : 'false'); });
+    scs.forEach(function(s){ if (s.dataset.i == i) s.removeAttribute('data-hidden'); else s.setAttribute('data-hidden',''); });
+    reset(scs[i]); }
+  tabs.forEach(function(t){ t.addEventListener('click', function(){ show(+t.dataset.i); }); });
+  scs.forEach(function(sc){
+    var next = sc.querySelector('.sc-next');
+    next.addEventListener('click', function(){
+      var st = sc.querySelectorAll('.st'), on = sc.querySelectorAll('.st.on').length;
+      if (on < st.length) st[on].classList.add('on');
+      if (on + 1 >= st.length) next.disabled = true;
+    });
+    sc.querySelector('.sc-replay').addEventListener('click', function(){ reset(sc); });
+    reset(sc);
+  });
+})();
+</script>
+</body></html>
