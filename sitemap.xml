@@ -3,4 +3,16 @@
   <url><loc>https://www.d2uguard.com/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
   <url><loc>https://www.d2uguard.com/protect</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.d2uguard.com/partners</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.d2uguard.com/partners/control-hub-ace</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.d2uguard.com/partners/threat-protection</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.d2uguard.com/partners/ai-governance</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.d2uguard.com/partners/vulnerability-management</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.d2uguard.com/partners/cloud-security</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.d2uguard.com/partners/asset-management</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.d2uguard.com/partners/identity-exposure</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.d2uguard.com/partners/network-monitoring</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.d2uguard.com/partners/shadow-ai-scan</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.d2uguard.com/partners/ace-in-action</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.d2uguard.com/partners/free-cyber-checkup</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.d2uguard.com/partners/email-security-assessment</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
