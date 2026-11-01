@@ -314,8 +314,13 @@ h3{font-family:var(--body);font-weight:700;font-size:1.02rem;line-height:1.35}
 .feat--ai b{background:#fff;color:var(--green-d)}
 .btn-row--sm{margin-top:.9rem}
 .btn-row--sm .btn{padding:.6rem 1.1rem;font-size:.86rem}
-.hero__inner .hl-feats{display:inline-grid;grid-template-columns:1fr}
-@media (max-width:520px){.feat{width:100%}.hero__inner .hl-feats{display:grid}}
+.hero__inner .hl-feats{gap:.6rem}
+.hero__inner .feat{padding:.85rem 1.05rem .85rem .75rem;gap:.55rem}
+@media (max-width:520px){.feat{width:100%}}
+
+.hero__promise{font-family:var(--display);font-size:clamp(1.15rem,1.7vw,1.4rem);font-weight:500;
+  color:var(--ink);margin:-1.1rem 0 1.8rem;letter-spacing:-.01em;line-height:1.3}
+.ace-tag{font-family:var(--display);font-style:italic;font-size:clamp(1.1rem,1.6vw,1.3rem);color:var(--green);margin-top:.6rem}
 </style>
 <style>
 .switch{background:var(--ink);color:#C3D4E4;font-size:.82rem}
@@ -432,10 +437,14 @@ h3{font-family:var(--body);font-weight:700;font-size:1.02rem;line-height:1.35}
       <span class="eyebrow" style="display:block"><span class="tagline">Unified Digital Defence</span><span class="tagline__sub">Managed Cybersecurity Services &middot; Fiji and the Pacific</span></span>
       <h1 style="margin-top:1.1rem">Cyber threats don't keep business hours. <em>Neither do we.</em></h1>
       <p class="lede hero__lede">
-        Your systems are monitored around the clock by security professionals who identify,
-        investigate and respond to threats — day, night, weekends and public holidays.
+        Intelligent, always-on cybersecurity that goes beyond traditional monitoring. Security
+        professionals and AI-powered automation identify, investigate and respond to threats around the
+        clock — day, night, weekends and public holidays. <b>ACE, our Adaptive Correlation Engine</b>,
+        connects what we see across your devices, network, cloud, identities and digital assets, so the
+        threats that matter most are dealt with first.
       </p>
-      <div class="hl-feats"><a class="feat feat--ace" href="#ace"><b>ACE</b>Your security in one score &rarr;</a><a class="feat feat--ai" href="#ai-governance"><b>New</b>AI Governance &amp; Security &rarr;</a></div>
+      <p class="hero__promise">One unified view. Clear security priorities. Faster threat response.</p>
+      <div class="hl-feats"><a class="feat feat--ace" href="#ace"><b>ACE</b>See how it works &rarr;</a><a class="feat feat--ai" href="#ai-governance"><b>New</b>AI Governance &amp; Security &rarr;</a></div>
       <div class="btn-row btn-row--sm">
         <a class="btn btn--primary" href="#health-check">Book a free cyber health check</a>
         <a class="btn btn--line" href="#cover">See what we cover</a>
@@ -604,6 +613,11 @@ h3{font-family:var(--body);font-weight:700;font-size:1.02rem;line-height:1.35}
       <h2>From noise to next steps.</h2>
       <p class="lede">ACE connects every signal across your network, devices, email, identities, exposure
         and AI use, and turns them into one score and a short list of actions in plain English.</p>
+      <p class="lede">By connecting security intelligence across your business, we identify vulnerabilities,
+        assess your security posture and prioritise the threats that matter most. With D2UGuard, you know
+        your cybersecurity is continuously monitored, assessed and strengthened — backed by experienced
+        security professionals and intelligent automation.</p>
+      <p class="ace-tag">Stay protected. Stay informed. Stay ahead of cyber threats.</p>
     </div>
     <div class="grid4">
       <div class="card"><h3>Your security, scored</h3><p>One number from 0 to 100 that your board can follow month to month.</p></div>
