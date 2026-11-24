@@ -71,3 +71,16 @@
   for = "/"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+
+# Shadow AI Exposure Scan page withdrawn for now (Nov 2026); send any old links to AI Governance
+[[redirects]]
+  from = "/partners/shadow-ai-scan"
+  to = "/partners/ai-governance"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/partners/shadow-ai-scan/"
+  to = "/partners/ai-governance"
+  status = 301
+  force = true
